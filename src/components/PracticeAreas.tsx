@@ -34,8 +34,8 @@ const practices = [
   },
   {
     icon: Lock,
-    title: "Privacy & Data",
-    description: "Protection of personal and corporate privacy in an increasingly connected world.",
+    title: "Drafting",
+    description: "Drafting for any legal document professionally.",
     number: "06",
   },
 ];
