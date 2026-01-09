@@ -39,7 +39,7 @@ const AdminDashboard = () => {
             Admin Control Panel
           </h1>
           <div className="flex gap-4">
-            <Button asChild variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">
+            <Button asChild variant="outline" className="border-primary/30 text-primary hover:bg-primary/10">
               <Link to="/?bypass_redirect=true">
                 <Home className="w-4 h-4 mr-2" />
                 Go to Website
@@ -54,12 +54,24 @@ const AdminDashboard = () => {
 
         <div className="max-w-6xl mx-auto space-y-8">
           <Tabs defaultValue="lawyers" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50">
-              <TabsTrigger value="lawyers" className="flex items-center gap-2 text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+            <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50 p-1 rounded-lg">
+              <TabsTrigger 
+                value="lawyers" 
+                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 
+                           text-muted-foreground hover:text-foreground 
+                           data-[state=active]:bg-primary data-[state=active]:text-primary-foreground 
+                           data-[state=active]:shadow-md data-[state=active]:shadow-primary/20 rounded-md"
+              >
                 <Briefcase className="w-5 h-5" />
                 Lawyer Records
               </TabsTrigger>
-              <TabsTrigger value="clients" className="flex items-center gap-2 text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <TabsTrigger 
+                value="clients" 
+                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 
+                           text-muted-foreground hover:text-foreground 
+                           data-[state=active]:bg-primary data-[state=active]:text-primary-foreground 
+                           data-[state=active]:shadow-md data-[state=active]:shadow-primary/20 rounded-md"
+              >
                 <User className="w-5 h-5" />
                 Client Records
               </TabsTrigger>
