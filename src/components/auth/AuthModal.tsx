@@ -39,6 +39,19 @@ const roleOptions: { value: AppRole; label: string; icon: React.ReactNode; descr
   },
 ];
 
+const loginRoleOptions: { value: 'user' | 'professional'; label: string; icon: React.ReactNode }[] = [
+  { 
+    value: 'user', 
+    label: 'Client', 
+    icon: <User className="w-5 h-5" />
+  },
+  { 
+    value: 'professional', 
+    label: 'Professional', 
+    icon: <Briefcase className="w-5 h-5" />
+  },
+];
+
 export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalProps) => {
   const [view, setView] = useState<AuthView>(defaultTab);
   const [email, setEmail] = useState('');
@@ -47,12 +60,15 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   const [fullName, setFullName] = useState('');
   const [selectedRole, setSelectedRole] = useState<AppRole>('user');
   const [loading, setLoading] = useState(false);
+  const [loginIntentRole, setLoginIntentRole] = useState<'user' | 'professional'>('user');
   const { signIn, signUp } = useAuth();
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
+      // Note: The actual role is determined by the backend after successful sign-in, 
+      // but the selection provides user clarity on the intended login path.
       const { error } = await signIn(email, password);
       if (error) {
         toast.error(error.message);
@@ -82,7 +98,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
       if (error) {
         toast.error(error.message);
       } else {
-        toast.success('Account created successfully!');
+        toast.success('Account created successfully! Please check your email for confirmation.');
         onClose();
         resetForm();
       }
@@ -123,6 +139,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
     setFullName('');
     setSelectedRole('user');
     setView('login');
+    setLoginIntentRole('user');
   };
 
   const getTitle = () => {
@@ -187,6 +204,31 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
         ) : view === 'login' ? (
           <>
             <form onSubmit={handleLoginSubmit} className="space-y-6 mt-4">
+              {/* Role Selection for Login Intent */}
+              <div className="space-y-3">
+                <Label className="text-muted-foreground">I am logging in as a...</Label>
+                <div className="grid grid-cols-2 gap-3">
+                  {loginRoleOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setLoginIntentRole(option.value)}
+                      className={`p-4 rounded-lg border transition-all duration-300 text-center ${
+                        loginIntentRole === option.value
+                          ? 'border-gold bg-gold/10 text-gold'
+                          : 'border-gold/20 bg-background hover:border-gold/40 text-muted-foreground'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        {option.icon}
+                        <span className="text-sm font-medium">{option.label}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {/* End Role Selection */}
+
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-muted-foreground">Email</Label>
                 <Input
