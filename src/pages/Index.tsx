@@ -8,9 +8,10 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LandingPage from "@/components/LandingPage";
+import { Navigate } from "react-router-dom";
 
 const Index = () => {
-  const { user, loading } = useAuth();
+  const { user, role, loading } = useAuth();
 
   // Show loading state
   if (loading) {
@@ -26,12 +27,17 @@ const Index = () => {
     );
   }
 
+  // Redirect lawyers to their dashboard
+  if (user && role === 'lawyer') {
+    return <Navigate to="/dashboard/lawyer" replace />;
+  }
+
   // Show landing page if not authenticated
   if (!user) {
     return <LandingPage />;
   }
 
-  // Show main content if authenticated
+  // Show main content if authenticated (user or admin)
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
