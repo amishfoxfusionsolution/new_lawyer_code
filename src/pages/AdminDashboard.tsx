@@ -1,12 +1,17 @@
 import { useAuth } from '@/hooks/useAuth';
 import { Navigate, Link } from 'react-router-dom';
-import { LogOut, Shield, Home } from 'lucide-react';
+import { LogOut, Shield, Home, User, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useAdminUsers } from '@/hooks/useAdminUsers';
+import UserTable from '@/components/admin/UserTable';
+import LawyerTable from '@/components/admin/LawyerTable';
 
 const AdminDashboard = () => {
   const { user, role, loading, signOut } = useAuth();
+  const { clients, lawyers, isLoading } = useAdminUsers();
 
   if (loading) {
     return (
@@ -47,26 +52,27 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          <Card className="bg-card border-gold/20 shadow-card">
-            <CardHeader>
-              <CardTitle className="text-2xl font-display text-primary">
-                Welcome, Administrator
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-muted-foreground">
-                This is the central hub for managing users, lawyers, and system settings.
-              </p>
-              <p className="text-sm text-foreground/70">
-                Current User: {user.email} (Role: {role})
-              </p>
-              <div className="flex gap-4 pt-4">
-                <Button variant="hero">Manage Users</Button>
-                <Button variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">System Logs</Button>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="max-w-6xl mx-auto space-y-8">
+          <Tabs defaultValue="lawyers" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50">
+              <TabsTrigger value="lawyers" className="flex items-center gap-2 text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                <Briefcase className="w-5 h-5" />
+                Lawyer Records
+              </TabsTrigger>
+              <TabsTrigger value="clients" className="flex items-center gap-2 text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                <User className="w-5 h-5" />
+                Client Records
+              </TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="lawyers" className="mt-6">
+              <LawyerTable lawyers={lawyers} isLoading={isLoading} />
+            </TabsContent>
+            
+            <TabsContent value="clients" className="mt-6">
+              <UserTable clients={clients} isLoading={isLoading} />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </div>
