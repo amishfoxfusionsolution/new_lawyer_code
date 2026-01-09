@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 import LawyerProfileSummary from '@/components/lawyer/LawyerProfileSummary';
-import LawyerDetailsForm from '@/components/lawyer/LawyerDetailsForm';
+import LawyerProfileForm from '@/components/lawyer/LawyerProfileForm';
 import { LogOut, ArrowLeft, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar'; 
@@ -70,7 +70,7 @@ const LawyerDashboard = () => {
                   Back to Summary
                 </Button>
               )}
-              <LawyerDetailsForm onSave={() => setIsEditing(false)} />
+              <LawyerProfileForm onSave={() => setIsEditing(false)} />
             </>
           ) : (
             <LawyerProfileSummary onEdit={() => setIsEditing(true)} />
