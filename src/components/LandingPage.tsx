@@ -3,6 +3,7 @@ import { Shield, Briefcase, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
+import heroBg from "@/assets/hero-bg.jpg";
 
 const LandingPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -50,7 +51,15 @@ const LandingPage = () => {
       {/* Hero Section */}
       <main className="flex-1 flex items-center justify-center relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary to-background" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat animate-scale-balance"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+          {/* Dark overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-secondary/80 to-background/90" />
+        </div>
+        
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-glow-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl animate-glow-pulse delay-1000" />
         

@@ -2,7 +2,7 @@ import React from 'react';
 import { AdminUser } from '@/hooks/useAdminUsers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Briefcase, Mail, MapPin, GraduationCap } from 'lucide-react';
+import { Briefcase, Mail, MapPin, Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface LawyerTableProps {
@@ -36,7 +36,7 @@ const LawyerTable: React.FC<LawyerTableProps> = ({ lawyers, isLoading }) => {
             <TableHeader>
               <TableRow className="bg-noir-medium hover:bg-noir-medium">
                 <TableHead className="w-[200px] text-primary">Lawyer</TableHead>
-                <TableHead className="text-primary">Professional Details</TableHead>
+                <TableHead className="text-primary">Contact Phone</TableHead>
                 <TableHead className="text-primary">Practice Areas</TableHead>
                 <TableHead className="text-primary">Location</TableHead>
               </TableRow>
@@ -60,11 +60,8 @@ const LawyerTable: React.FC<LawyerTableProps> = ({ lawyers, isLoading }) => {
                     </TableCell>
                     <TableCell className="text-sm">
                       <div className="flex items-center gap-2">
-                        <GraduationCap className="w-3 h-3 text-muted-foreground" />
-                        {lawyer.enrollment_number || 'N/A'}
-                      </div>
-                      <div className="text-xs text-muted-foreground mt-1">
-                        {lawyer.law_degree_university || 'University N/A'}
+                        <Phone className="w-3 h-3 text-muted-foreground" />
+                        {lawyer.phone || 'N/A'}
                       </div>
                     </TableCell>
                     <TableCell>

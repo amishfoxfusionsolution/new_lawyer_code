@@ -8,6 +8,7 @@ import { useAdminUsers } from '@/hooks/useAdminUsers';
 import UserTable from '@/components/admin/UserTable';
 import LawyerTable from '@/components/admin/LawyerTable';
 import StatCard from '@/components/admin/StatCard';
+import { toast } from 'sonner';
 
 const AdminDashboard = () => {
   const { user, role, loading, signOut } = useAuth();
@@ -28,9 +29,9 @@ const AdminDashboard = () => {
     return <Navigate to="/" replace />;
   }
 
-  // Calculate stats based on mocked data from useAdminUsers
-  const activeClients = clients.filter(c => c.status === 'active').length;
-  const availableLawyers = lawyers.filter(l => l.status === 'available').length;
+  // Calculate stats based on user request
+  const totalAttorneys = lawyers.length;
+  const totalClients = clients.length;
   const totalCases = clients.reduce((sum, c) => sum + (c.casesCount || 0), 0);
 
   return (
@@ -87,7 +88,7 @@ const AdminDashboard = () => {
             <div className="animate-fade-in" style={{ animationDelay: '150ms' }}>
               <StatCard
                 title="Total Attorneys"
-                value={lawyers.length}
+                value={totalAttorneys}
                 subtitle="Licensed professionals"
                 icon={Briefcase}
                 trend={{ value: 12, isPositive: true }}
@@ -95,9 +96,9 @@ const AdminDashboard = () => {
             </div>
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
               <StatCard
-                title="Active Clients"
-                value={activeClients}
-                subtitle={`of ${clients.length} total`}
+                title="Total Clients"
+                value={totalClients}
+                subtitle={`Registered users`}
                 icon={Users}
                 trend={{ value: 8, isPositive: true }}
               />
@@ -105,8 +106,8 @@ const AdminDashboard = () => {
             <div className="animate-fade-in" style={{ animationDelay: '250ms' }}>
               <StatCard
                 title="Available Lawyers"
-                value={availableLawyers}
-                subtitle="Ready for cases"
+                value={totalAttorneys}
+                subtitle="Total lawyers in network"
                 icon={Shield}
               />
             </div>
@@ -153,7 +154,10 @@ const AdminDashboard = () => {
                     <h2 className="font-display text-2xl font-semibold text-foreground">Attorney Records</h2>
                     <p className="text-sm text-muted-foreground">Manage your legal team members</p>
                   </div>
-                  <Button className="gradient-gold text-primary-foreground hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+                  <Button 
+                    onClick={() => toast.info("Feature not yet implemented: Add Attorney")}
+                    className="gradient-gold text-primary-foreground hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+                  >
                     <Briefcase className="w-4 h-4 mr-2" />
                     Add Attorney
                   </Button>
@@ -167,7 +171,10 @@ const AdminDashboard = () => {
                     <h2 className="font-display text-2xl font-semibold text-foreground">Client Records</h2>
                     <p className="text-sm text-muted-foreground">View and manage client information</p>
                   </div>
-                  <Button className="gradient-gold text-primary-foreground hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+                  <Button 
+                    onClick={() => toast.info("Feature not yet implemented: Add Client")}
+                    className="gradient-gold text-primary-foreground hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
+                  >
                     <Users className="w-4 h-4 mr-2" />
                     Add Client
                   </Button>
