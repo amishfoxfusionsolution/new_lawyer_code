@@ -60,7 +60,7 @@ const AdminDashboard = () => {
                 className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 ease-out
                            text-muted-foreground hover:text-foreground 
                            data-[state=active]:bg-primary/10 data-[state=active]:text-primary 
-                           data-[state=active]:scale-[1.02] data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
+                           data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
                            data-[state=active]:border data-[state=active]:border-primary/30 rounded-md"
               >
                 <Briefcase className="w-5 h-5" />
@@ -71,7 +71,7 @@ const AdminDashboard = () => {
                 className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 ease-out
                            text-muted-foreground hover:text-foreground 
                            data-[state=active]:bg-primary/10 data-[state=active]:text-primary 
-                           data-[state=active]:scale-[1.02] data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
+                           data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
                            data-[state=active]:border data-[state=active]:border-primary/30 rounded-md"
               >
                 <User className="w-5 h-5" />
