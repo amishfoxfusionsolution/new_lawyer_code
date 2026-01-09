@@ -27,22 +27,13 @@ const Index = () => {
     );
   }
 
-  // Redirect lawyers to their dashboard
-  if (user && role === 'lawyer') {
-    return <Navigate to="/dashboard/lawyer" replace />;
-  }
-
-  // Redirect admins to their dashboard
-  if (user && role === 'admin') {
-    return <Navigate to="/dashboard/admin" replace />;
-  }
-
   // Show landing page if not authenticated
   if (!user) {
     return <LandingPage />;
   }
 
-  // Show main content if authenticated as a standard user
+  // If authenticated (regardless of role), show main content.
+  // Lawyers/Admins can navigate to their dashboards manually or via the Navbar dropdown.
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
