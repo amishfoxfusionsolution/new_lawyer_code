@@ -65,24 +65,19 @@ const LandingPage = () => {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-8 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
-              <div className="p-6 rounded-full bg-primary/15 border-2 border-primary/30 shadow-sapphire">
-                <AnimatedScales size={100} />
-              </div>
-            </div>
             
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-6 animate-reveal-up" style={{ animationDelay: '0.3s' }}>
+            <h1 className="text-5xl md:text-7xl font-display font-bold text-foreground mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
               Justice in the{' '}
               <span className="bg-gradient-to-r from-sapphire via-sapphire-light to-sapphire bg-clip-text text-transparent">
                 Shadows
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-reveal-up" style={{ animationDelay: '0.5s' }}>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-reveal-up" style={{ animationDelay: '0.3s' }}>
               Where discretion meets excellence. Your most sensitive legal matters deserve the utmost privacy and expertise.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-reveal-up" style={{ animationDelay: '0.7s' }}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-reveal-up" style={{ animationDelay: '0.5s' }}>
               <Button 
                 variant="hero" 
                 size="lg" 
@@ -103,17 +98,17 @@ const LandingPage = () => {
 
             {/* Features Grid */}
             <div className="grid md:grid-cols-3 gap-8 mt-16">
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
+              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
                 <Shield className="w-10 h-10 text-primary mb-4 mx-auto" />
                 <h3 className="font-display text-lg font-semibold text-foreground mb-2">For Clients</h3>
                 <p className="text-muted-foreground text-sm">Access top-tier legal services with complete confidentiality</p>
               </div>
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
+              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
                 <Briefcase className="w-10 h-10 text-primary mb-4 mx-auto" />
                 <h3 className="font-display text-lg font-semibold text-foreground mb-2">For Lawyers</h3>
                 <p className="text-muted-foreground text-sm">Join an elite network of legal professionals</p>
               </div>
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '1.3s' }}>
+              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
                 <Users className="w-10 h-10 text-primary mb-4 mx-auto" />
                 <h3 className="font-display text-lg font-semibold text-foreground mb-2">Trusted Network</h3>
                 <p className="text-muted-foreground text-sm">Connect with verified professionals worldwide</p>
