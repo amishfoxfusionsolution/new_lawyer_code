@@ -221,3 +221,13 @@
   animation: scaleTilt 2.5s ease-in-out infinite;
   transform-origin: center top;
 }
+@keyframes scaleBalance {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-scale-balance {
+  animation: scaleBalance 3s ease-in-out infinite;
+  transform-origin: center 30%;
+}
+
