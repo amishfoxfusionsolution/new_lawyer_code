@@ -8,10 +8,11 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LandingPage from "@/components/LandingPage";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const Index = () => {
   const { user, role, loading } = useAuth();
+  const location = useLocation();
 
   // Show loading state
   if (loading) {
@@ -27,13 +28,26 @@ const Index = () => {
     );
   }
 
+  // Check for bypass parameter
+  const params = new URLSearchParams(location.search);
+  const bypassRedirect = params.get('bypass_redirect') === 'true';
+
   // Show landing page if not authenticated
   if (!user) {
     return <LandingPage />;
   }
 
-  // If authenticated (regardless of role), show main content.
-  // Lawyers/Admins can navigate to their dashboards manually or via the Navbar dropdown.
+  // If authenticated, redirect to dashboard unless bypass is active
+  if (user && !bypassRedirect) {
+    if (role === 'lawyer') {
+      return <Navigate to="/dashboard/lawyer" replace />;
+    }
+    if (role === 'admin') {
+      return <Navigate to="/dashboard/admin" replace />;
+    }
+  }
+
+  // If authenticated as 'user' or if bypass is active, show main content.
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

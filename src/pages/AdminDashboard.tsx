@@ -1,6 +1,6 @@
 import { useAuth } from '@/hooks/useAuth';
-import { Navigate } from 'react-router-dom';
-import { LogOut, Shield, ArrowLeft } from 'lucide-react';
+import { Navigate, Link } from 'react-router-dom';
+import { LogOut, Shield, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,10 +33,18 @@ const AdminDashboard = () => {
             <Shield className="w-8 h-8 text-primary" />
             Admin Control Panel
           </h1>
-          <Button variant="outline" onClick={signOut} className="border-red-500/30 text-red-400 hover:bg-red-500/10">
-            <LogOut className="w-4 h-4 mr-2" />
-            Sign Out
-          </Button>
+          <div className="flex gap-4">
+            <Button asChild variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">
+              <Link to="/?bypass_redirect=true">
+                <Home className="w-4 h-4 mr-2" />
+                Go to Website
+              </Link>
+            </Button>
+            <Button variant="outline" onClick={signOut} className="border-red-500/30 text-red-400 hover:bg-red-500/10">
+              <LogOut className="w-4 h-4 mr-2" />
+              Sign Out
+            </Button>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-8">

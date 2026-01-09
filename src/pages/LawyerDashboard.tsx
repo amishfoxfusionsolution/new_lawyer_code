@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import LawyerProfileSummary from '@/components/lawyer/LawyerProfileSummary';
 import LawyerProfileForm from '@/components/lawyer/LawyerProfileForm';
 import { LogOut, ArrowLeft, Home } from 'lucide-react';
@@ -42,13 +42,11 @@ const LawyerDashboard = () => {
             Lawyer Dashboard
           </h1>
           <div className="flex gap-4">
-            <Button 
-              variant="outline" 
-              onClick={() => window.location.href = '/'} 
-              className="border-gold/30 text-gold hover:bg-gold/10"
-            >
-              <Home className="w-4 h-4 mr-2" />
-              Go to Website
+            <Button asChild variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">
+              <Link to="/?bypass_redirect=true">
+                <Home className="w-4 h-4 mr-2" />
+                Go to Website
+              </Link>
             </Button>
             <Button variant="outline" onClick={signOut} className="border-red-500/30 text-red-400 hover:bg-red-500/10">
               <LogOut className="w-4 h-4 mr-2" />
