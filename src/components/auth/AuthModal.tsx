@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,11 +6,11 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { User, Briefcase, Shield, ArrowLeft, Phone } from 'lucide-react';
+import { User, Briefcase, Shield, ArrowLeft } from 'lucide-react';
 import AnimatedScales from '@/components/AnimatedScales';
 
 type AppRole = 'user' | 'lawyer' | 'admin';
-type AuthView = 'login' | 'signup' | 'forgot-password' | 'verify-otp';
+type AuthView = 'login' | 'signup' | 'forgot-password';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -47,84 +47,10 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   const [fullName, setFullName] = useState('');
   const [selectedRole, setSelectedRole] = useState<AppRole>('user');
   const [loading, setLoading] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [generatedOtp, setGeneratedOtp] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
-  const [countdown, setCountdown] = useState(0);
   const { signIn, signUp } = useAuth();
-
-  // Countdown timer for resend OTP
-  useEffect(() => {
-    if (countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [countdown]);
-
-  const generateOtp = () => {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  };
-
-  const sendOtp = async () => {
-    if (!phone || phone.length < 10) {
-      toast.error('Please enter a valid phone number');
-      return;
-    }
-
-    setLoading(true);
-    const newOtp = generateOtp();
-    setGeneratedOtp(newOtp);
-    
-    // In production, this would send via SMS gateway (Twilio, etc.)
-    // For demo purposes, we'll show the OTP in a toast
-    toast.success(`Demo OTP sent to ${phone}: ${newOtp}`, { duration: 10000 });
-    setOtpSent(true);
-    setCountdown(60);
-    setLoading(false);
-  };
-
-  const verifyOtp = () => {
-    if (otp === generatedOtp) {
-      return true;
-    }
-    toast.error('Invalid OTP. Please try again.');
-    return false;
-  };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!otpSent) {
-      // First step: validate email/password and send OTP
-      setLoading(true);
-      try {
-        // First verify credentials exist by attempting sign in
-        const { error } = await signIn(email, password);
-        if (error) {
-          toast.error(error.message);
-          setLoading(false);
-          return;
-        }
-        
-        // Sign out immediately - we need OTP verification first
-        await supabase.auth.signOut();
-        
-        // Now send OTP
-        await sendOtp();
-        setView('verify-otp');
-      } catch (error: any) {
-        toast.error(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
-
-  const handleOtpVerification = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!verifyOtp()) return;
-    
     setLoading(true);
     try {
       const { error } = await signIn(email, password);
@@ -196,9 +122,6 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
     setPhone('');
     setFullName('');
     setSelectedRole('user');
-    setOtp('');
-    setGeneratedOtp('');
-    setOtpSent(false);
     setView('login');
   };
 
@@ -210,8 +133,6 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
         return 'Join Unseen Lawyers';
       case 'forgot-password':
         return 'Reset Password';
-      case 'verify-otp':
-        return 'Verify Phone';
     }
   };
 
@@ -227,58 +148,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
           </DialogTitle>
         </DialogHeader>
 
-        {view === 'verify-otp' ? (
-          <form onSubmit={handleOtpVerification} className="space-y-6 mt-4">
-            <div className="text-center">
-              <Phone className="w-12 h-12 text-gold mx-auto mb-4" />
-              <p className="text-muted-foreground text-sm">
-                We've sent a 6-digit OTP to <span className="text-gold">{phone}</span>
-              </p>
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="otp" className="text-muted-foreground">Enter OTP</Label>
-              <Input
-                id="otp"
-                type="text"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                className="bg-background border-gold/20 focus:border-gold text-center text-2xl tracking-widest"
-                placeholder="000000"
-                maxLength={6}
-                required
-              />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={loading || otp.length !== 6}
-              className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
-            >
-              {loading ? 'Verifying...' : 'Verify & Sign In'}
-            </Button>
-
-            <div className="text-center">
-              <button
-                type="button"
-                onClick={sendOtp}
-                disabled={countdown > 0 || loading}
-                className="text-gold hover:text-gold-light text-sm transition-colors disabled:opacity-50"
-              >
-                {countdown > 0 ? `Resend OTP in ${countdown}s` : 'Resend OTP'}
-              </button>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => { setView('login'); setOtpSent(false); }}
-              className="flex items-center justify-center gap-2 w-full text-gold hover:text-gold-light text-sm transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Login
-            </button>
-          </form>
-        ) : view === 'forgot-password' ? (
+        {view === 'forgot-password' ? (
           <form onSubmit={handleForgotPassword} className="space-y-6 mt-4">
             <p className="text-muted-foreground text-sm text-center">
               Enter your email address and we'll send you a link to reset your password.
@@ -353,26 +223,12 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-muted-foreground">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
-                  className="bg-background border-gold/20 focus:border-gold"
-                  placeholder="+1234567890"
-                  required
-                />
-                <p className="text-xs text-muted-foreground">OTP will be sent for verification</p>
-              </div>
-
               <Button
                 type="submit"
                 disabled={loading}
                 className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
               >
-                {loading ? 'Please wait...' : 'Continue with OTP'}
+                {loading ? 'Signing In...' : 'Sign In'}
               </Button>
             </form>
 
