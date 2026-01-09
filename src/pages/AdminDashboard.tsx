@@ -57,20 +57,22 @@ const AdminDashboard = () => {
             <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50 p-1 rounded-lg">
               <TabsTrigger 
                 value="lawyers" 
-                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 
+                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 ease-out
                            text-muted-foreground hover:text-foreground 
-                           data-[state=active]:bg-primary data-[state=active]:text-primary-foreground 
-                           data-[state=active]:shadow-md data-[state=active]:shadow-primary/20 rounded-md"
+                           data-[state=active]:bg-primary/10 data-[state=active]:text-primary 
+                           data-[state=active]:scale-[1.02] data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
+                           data-[state=active]:border data-[state=active]:border-primary/30 rounded-md"
               >
                 <Briefcase className="w-5 h-5" />
                 Lawyer Records
               </TabsTrigger>
               <TabsTrigger 
                 value="clients" 
-                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 
+                className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 ease-out
                            text-muted-foreground hover:text-foreground 
-                           data-[state=active]:bg-primary data-[state=active]:text-primary-foreground 
-                           data-[state=active]:shadow-md data-[state=active]:shadow-primary/20 rounded-md"
+                           data-[state=active]:bg-primary/10 data-[state=active]:text-primary 
+                           data-[state=active]:scale-[1.02] data-[state=active]:shadow-xl data-[state=active]:shadow-primary/30 
+                           data-[state=active]:border data-[state=active]:border-primary/30 rounded-md"
               >
                 <User className="w-5 h-5" />
                 Client Records
