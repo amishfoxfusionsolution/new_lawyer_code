@@ -39,15 +39,15 @@ const roleOptions: { value: AppRole; label: string; icon: React.ReactNode; descr
   },
 ];
 
-const loginRoleOptions: { value: 'user' | 'professional'; label: string; icon: React.ReactNode }[] = [
+const loginRoleOptions: { value: 'user' | 'lawyer'; label: string; icon: React.ReactNode }[] = [
   { 
     value: 'user', 
     label: 'Client', 
     icon: <User className="w-5 h-5" />
   },
   { 
-    value: 'professional', 
-    label: 'Professional', 
+    value: 'lawyer', 
+    label: 'Lawyer', 
     icon: <Briefcase className="w-5 h-5" />
   },
 ];
@@ -60,7 +60,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   const [fullName, setFullName] = useState('');
   const [selectedRole, setSelectedRole] = useState<AppRole>('user');
   const [loading, setLoading] = useState(false);
-  const [loginIntentRole, setLoginIntentRole] = useState<'user' | 'professional'>('user');
+  const [loginIntentRole, setLoginIntentRole] = useState<'user' | 'lawyer'>('user');
   const { signIn, signUp } = useAuth();
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
