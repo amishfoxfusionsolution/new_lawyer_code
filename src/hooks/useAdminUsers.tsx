@@ -8,6 +8,9 @@ export type AdminUser = Tables<'profiles'> & {
   role: Tables<'user_roles'>['role'];
   email: string;
   id: string; // Auth user ID
+  // Mocked fields for dashboard stats
+  status?: 'active' | 'inactive' | 'available';
+  casesCount?: number;
 };
 
 const fetchAllUsers = async (): Promise<AdminUser[]> => {
@@ -32,14 +35,29 @@ const fetchAllUsers = async (): Promise<AdminUser[]> => {
   // Create a map for quick role lookup
   const roleMap = new Map(rolesData.map(r => [r.user_id, r.role]));
 
-  // 3. Merge data
-  const users: AdminUser[] = profilesData.map(profile => ({
-    ...profile,
-    // Get role from map, default to 'user' if not found
-    role: roleMap.get(profile.user_id) || 'user', 
-    email: profile.email || 'Email not available',
-    id: profile.user_id,
-  }));
+  // 3. Merge data and mock dashboard specific fields
+  const users: AdminUser[] = profilesData.map(profile => {
+    const role = roleMap.get(profile.user_id) || 'user';
+    
+    let status: 'active' | 'inactive' | 'available' = 'inactive';
+    let casesCount = 0;
+
+    if (role === 'user') {
+      status = Math.random() > 0.5 ? 'active' : 'inactive';
+      casesCount = Math.floor(Math.random() * 5);
+    } else if (role === 'lawyer') {
+      status = Math.random() > 0.7 ? 'available' : 'inactive';
+    }
+
+    return {
+      ...profile,
+      role, 
+      email: profile.email || 'Email not available',
+      id: profile.user_id,
+      status,
+      casesCount,
+    };
+  });
 
   return users;
 };

@@ -43,11 +43,15 @@
     --noir: 0 0% 4%;
     --noir-light: 0 0% 8%;
     --noir-medium: 0 0% 12%;
+    --gold: 45 90% 60%; /* New Gold */
+    --gold-light: 45 100% 70%;
+    --gold-dark: 45 80% 40%;
 
     /* Gradients */
     --gradient-sapphire: linear-gradient(135deg, hsl(var(--sapphire)), hsl(var(--sapphire-light)));
     --gradient-noir: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 8%));
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 50%, hsl(0 0% 4%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
 
     /* Shadows */
     --shadow-sapphire: 0 0 40px hsl(210 60% 40% / 0.15);
@@ -127,6 +131,10 @@
     background-image: var(--gradient-noir);
   }
 
+  .gradient-gold {
+    background-image: var(--gradient-gold);
+  }
+
   .shadow-sapphire {
     box-shadow: var(--shadow-sapphire);
   }
@@ -142,6 +150,10 @@
   /* Custom strong blue glow */
   .shadow-primary-glow {
     box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.5);
   }
 
   .animate-fade-in {
