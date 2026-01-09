@@ -54,14 +54,14 @@ const AdminDashboard = () => {
 
         <div className="max-w-6xl mx-auto space-y-8">
           <Tabs defaultValue="lawyers" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50 p-2 rounded-lg">
+            <TabsList className="grid w-full grid-cols-2 bg-noir-medium border border-border/50 rounded-lg">
               <TabsTrigger 
                 value="lawyers" 
                 className="flex items-center gap-2 text-lg py-3 px-4 transition-all duration-300 ease-out
                            text-muted-foreground hover:text-foreground 
                            data-[state=active]:bg-foreground data-[state=active]:text-primary-foreground 
                            data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/50 
-                           data-[state=active]:border data-[state=active]:border-primary/50 rounded-md"
+                           data-[state=active]:border data-[state=active]:border-primary/50 rounded-lg"
               >
                 <Briefcase className="w-5 h-5" />
                 Lawyer Records
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
                            text-muted-foreground hover:text-foreground 
                            data-[state=active]:bg-foreground data-[state=active]:text-primary-foreground 
                            data-[state=active]:shadow-2xl data-[state=active]:shadow-primary/50 
-                           data-[state=active]:border data-[state=active]:border-primary/50 rounded-md"
+                           data-[state=active]:border data-[state=active]:border-primary/50 rounded-lg"
               >
                 <User className="w-5 h-5" />
                 Client Records
