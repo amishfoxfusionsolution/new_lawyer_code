@@ -24,6 +24,21 @@ export type Database = {
           phone: string | null
           updated_at: string
           user_id: string
+          // --- NEW FIELDS ---
+          date_of_birth: string | null
+          father_husband_name: string | null
+          nationality: string | null
+          enrollment_number: string | null
+          enrollment_date: string | null
+          law_degree_university: string | null
+          years_of_experience: number | null
+          practice_areas: string[] | null
+          office_address: string | null
+          city: string | null
+          state: string | null
+          linkedin_url: string | null
+          bio: string | null
+          // --- END NEW FIELDS ---
         }
         Insert: {
           avatar_url?: string | null
@@ -34,6 +49,21 @@ export type Database = {
           phone?: string | null
           updated_at?: string
           user_id: string
+          // --- NEW FIELDS ---
+          date_of_birth?: string | null
+          father_husband_name?: string | null
+          nationality?: string | null
+          enrollment_number?: string | null
+          enrollment_date?: string | null
+          law_degree_university?: string | null
+          years_of_experience?: number | null
+          practice_areas?: string[] | null
+          office_address?: string | null
+          city?: string | null
+          state?: string | null
+          linkedin_url?: string | null
+          bio?: string | null
+          // --- END NEW FIELDS ---
         }
         Update: {
           avatar_url?: string | null
@@ -44,6 +74,21 @@ export type Database = {
           phone?: string | null
           updated_at?: string
           user_id?: string
+          // --- NEW FIELDS ---
+          date_of_birth?: string | null
+          father_husband_name?: string | null
+          nationality?: string | null
+          enrollment_number?: string | null
+          enrollment_date?: string | null
+          law_degree_university?: string | null
+          years_of_experience?: number | null
+          practice_areas?: string[] | null
+          office_address?: string | null
+          city?: string | null
+          state?: string | null
+          linkedin_url?: string | null
+          bio?: string | null
+          // --- END NEW FIELDS ---
         }
         Relationships: []
       }
