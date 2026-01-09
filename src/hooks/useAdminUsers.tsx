@@ -11,29 +11,32 @@ export type AdminUser = Tables<'profiles'> & {
 };
 
 const fetchAllUsers = async (): Promise<AdminUser[]> => {
-  // Fetch all profiles and join with user_roles
-  const { data: profiles, error: profileError } = await supabase
+  // 1. Fetch all profiles
+  const { data: profilesData, error: profileError } = await supabase
     .from('profiles')
-    .select(`
-      *,
-      user_roles ( role )
-    `);
+    .select('*');
 
   if (profileError) {
     throw new Error(`Failed to fetch profiles: ${profileError.message}`);
   }
-
-  // Fetch all auth users to get emails (since profiles.email might be null)
-  // NOTE: This requires RLS policies to allow admin to view all profiles and user_roles.
-  // Assuming the current user (admin) has the necessary permissions.
   
-  // For simplicity and to avoid fetching all auth users (which might be restricted), 
-  // we rely on the email stored in the profile table, which is populated on sign up.
-  // If profile.email is null, we use the user_id as a fallback identifier.
+  // 2. Fetch all user roles separately
+  const { data: rolesData, error: rolesError } = await supabase
+    .from('user_roles')
+    .select('user_id, role');
 
-  const users: AdminUser[] = profiles.map(profile => ({
+  if (rolesError) {
+    throw new Error(`Failed to fetch user roles: ${rolesError.message}`);
+  }
+
+  // Create a map for quick role lookup
+  const roleMap = new Map(rolesData.map(r => [r.user_id, r.role]));
+
+  // 3. Merge data
+  const users: AdminUser[] = profilesData.map(profile => ({
     ...profile,
-    role: profile.user_roles?.role || 'user', // Default to 'user' if role is missing
+    // Get role from map, default to 'user' if not found
+    role: roleMap.get(profile.user_id) || 'user', 
     email: profile.email || 'Email not available',
     id: profile.user_id,
   }));
@@ -49,6 +52,7 @@ export const useAdminUsers = () => {
   });
 
   if (error) {
+    // We still toast the error, but the underlying fetch should now work.
     toast.error(`Error loading user data: ${error.message}`);
   }
 
