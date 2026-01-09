@@ -61,24 +61,24 @@ const Testimonials = () => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="w-12 h-px bg-primary"></span>
+          <div className="inline-flex items-center gap-3 mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
             <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Testimonials</span>
-            <span className="w-12 h-px bg-primary"></span>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8">
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 animate-reveal-up" style={{ animationDelay: '0.3s' }}>
             Words From{" "}
-            <span className="bg-gradient-to-r from-primary to-gold-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
               The Shadows
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg animate-reveal-up" style={{ animationDelay: '0.5s' }}>
             Our clients speak only in whispers, but their gratitude echoes loudly.
           </p>
         </div>
 
         {/* Featured Testimonial */}
-        <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0 animate-scale-in' : 'opacity-0 translate-y-10'}`}>
           <div className="relative bg-gradient-to-br from-card via-card to-noir-medium border border-border/50 rounded-lg p-10 md:p-16 overflow-hidden">
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
@@ -146,16 +146,16 @@ const Testimonials = () => {
         </div>
 
         {/* Stats Row */}
-        <div className={`grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-20 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="text-center p-6 border-r border-border/50">
+        <div className={`grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-20 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0 animate-reveal-up' : 'opacity-0 translate-y-10'}`}>
+          <div className="text-center p-6 border-r border-border/50 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
             <div className="text-muted-foreground text-sm uppercase tracking-wider">Client Satisfaction</div>
           </div>
-          <div className="text-center p-6 border-r border-border/50">
+          <div className="text-center p-6 border-r border-border/50 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">500+</div>
             <div className="text-muted-foreground text-sm uppercase tracking-wider">Happy Clients</div>
           </div>
-          <div className="text-center p-6">
+          <div className="text-center p-6 animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
             <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">25+</div>
             <div className="text-muted-foreground text-sm uppercase tracking-wider">Years Trusted</div>
           </div>

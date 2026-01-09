@@ -67,8 +67,8 @@ const ResetPassword = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="w-full max-w-md text-center">
-          <div className="p-8 rounded-lg bg-secondary border border-gold/20">
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <div className="p-8 rounded-lg bg-secondary border border-primary/20">
+            <CheckCircle className="w-16 h-16 text-primary mx-auto mb-4" />
             <h1 className="text-2xl font-display font-bold text-foreground mb-2">
               Password Updated!
             </h1>
@@ -77,7 +77,7 @@ const ResetPassword = () => {
             </p>
             <Button
               onClick={() => navigate('/')}
-              className="bg-gold hover:bg-gold-light text-background"
+              className="bg-primary hover:bg-sapphire-light text-background"
             >
               Go to Home
             </Button>
@@ -90,10 +90,10 @@ const ResetPassword = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-md">
-        <div className="p-8 rounded-lg bg-secondary border border-gold/20">
+        <div className="p-8 rounded-lg bg-secondary border border-primary/20">
           <div className="flex items-center justify-center mb-6">
-            <div className="p-3 rounded-full bg-gold/10 border border-gold/20">
-              <Scale className="w-8 h-8 text-gold" />
+            <div className="p-3 rounded-full bg-primary/10 border border-primary/20">
+              <Scale className="w-8 h-8 text-primary" />
             </div>
           </div>
 
@@ -115,7 +115,7 @@ const ResetPassword = () => {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold pr-10"
+                  className="bg-background border-primary/20 focus:border-primary pr-10"
                   placeholder="••••••••"
                   required
                   minLength={6}
@@ -139,7 +139,7 @@ const ResetPassword = () => {
                 type={showPassword ? 'text' : 'password'}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="bg-background border-gold/20 focus:border-gold"
+                className="bg-background border-primary/20 focus:border-primary"
                 placeholder="••••••••"
                 required
                 minLength={6}
@@ -149,7 +149,7 @@ const ResetPassword = () => {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
+              className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
             >
               {loading ? 'Updating...' : 'Update Password'}
             </Button>
@@ -158,7 +158,7 @@ const ResetPassword = () => {
           <div className="mt-6 text-center">
             <button
               onClick={() => navigate('/')}
-              className="text-gold hover:text-gold-light text-sm transition-colors"
+              className="text-primary hover:text-sapphire-light text-sm transition-colors"
             >
               Back to Home
             </button>

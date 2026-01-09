@@ -12,36 +12,40 @@ const Hero = () => {
           style={{ backgroundImage: `url(${heroBg})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background"></div>
+        
+        {/* Subtle background glow */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-glow-pulse opacity-50"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-glow-pulse delay-1000 opacity-50"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Tagline */}
-          <p className="text-primary uppercase tracking-[0.4em] text-sm mb-6 animate-fade-in font-body">
+          <p className="text-primary uppercase tracking-[0.4em] text-sm mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
             Justice in the Shadows
           </p>
 
           {/* Main Heading */}
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight animate-fade-in">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
             Where{" "}
-            <span className="bg-gradient-to-r from-primary to-gold-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
               Discretion
             </span>{" "}
             Meets{" "}
-            <span className="bg-gradient-to-r from-gold-light to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-sapphire-light to-primary bg-clip-text text-transparent">
               Excellence
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 font-body leading-relaxed animate-fade-in-delayed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 font-body leading-relaxed animate-reveal-up" style={{ animationDelay: '0.5s' }}>
             Elite legal representation for those who value privacy, precision, and unwavering dedication 
             to protecting what matters most.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delayed-2">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-reveal-up" style={{ animationDelay: '0.7s' }}>
             <Button variant="hero" size="xl">
               Schedule Consultation
             </Button>
@@ -51,16 +55,16 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto animate-fade-in-delayed-3">
-            <div className="text-center">
+          <div className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto">
+            <div className="text-center animate-scale-in" style={{ animationDelay: '0.9s' }}>
               <div className="font-display text-4xl md:text-5xl font-bold text-primary">25+</div>
               <div className="text-muted-foreground text-sm uppercase tracking-wider mt-2 font-body">Years Experience</div>
             </div>
-            <div className="text-center border-x border-border">
+            <div className="text-center border-x border-border animate-scale-in" style={{ animationDelay: '1.1s' }}>
               <div className="font-display text-4xl md:text-5xl font-bold text-primary">98%</div>
               <div className="text-muted-foreground text-sm uppercase tracking-wider mt-2 font-body">Success Rate</div>
             </div>
-            <div className="text-center">
+            <div className="text-center animate-scale-in" style={{ animationDelay: '1.3s' }}>
               <div className="font-display text-4xl md:text-5xl font-bold text-primary">500+</div>
               <div className="text-muted-foreground text-sm uppercase tracking-wider mt-2 font-body">Cases Won</div>
             </div>

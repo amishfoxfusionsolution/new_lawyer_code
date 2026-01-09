@@ -47,10 +47,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          dark: "hsl(var(--gold-dark))",
+        sapphire: {
+          DEFAULT: "hsl(var(--sapphire))",
+          light: "hsl(var(--sapphire-light))",
+          dark: "hsl(var(--sapphire-dark))",
         },
         noir: {
           DEFAULT: "hsl(var(--noir))",
@@ -103,8 +103,8 @@ export default {
           "100%": { opacity: "1", transform: "scale(1)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(43 74% 49% / 0.2)" },
-          "50%": { boxShadow: "0 0 40px hsl(43 74% 49% / 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(210 60% 40% / 0.2)" },
+          "50%": { boxShadow: "0 0 40px hsl(210 60% 40% / 0.4)" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },

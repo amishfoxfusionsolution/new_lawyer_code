@@ -50,24 +50,24 @@ const About = () => {
     <section id="about" ref={sectionRef} className="py-32 bg-gradient-to-b from-background via-card to-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/3 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-20 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-float delay-1000"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="w-12 h-px bg-primary"></span>
+          <div className="inline-flex items-center gap-3 mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
             <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">About Us</span>
-            <span className="w-12 h-px bg-primary"></span>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 leading-tight">
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
             The Silent Force Behind{" "}
             <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-primary to-gold-light bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
                 Your Victory
               </span>
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-gold-light rounded-full"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-sapphire-light rounded-full animate-line-grow" style={{ animationDelay: '0.5s' }}></span>
             </span>
           </h2>
         </div>
@@ -76,20 +76,20 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left - Text Content */}
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <p className="text-xl text-foreground/90 leading-relaxed mb-8 font-light">
+            <p className="text-xl text-foreground/90 leading-relaxed mb-8 font-light animate-fade-in-left" style={{ animationDelay: '0.7s' }}>
               For over two decades, Unseen Lawyers has operated in the shadows of the legal world, 
               delivering decisive victories for clients who demand the highest level of{" "}
               <span className="text-primary font-medium">confidentiality</span> and{" "}
               <span className="text-primary font-medium">expertise</span>.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-10 text-lg">
+            <p className="text-muted-foreground leading-relaxed mb-10 text-lg animate-fade-in-left" style={{ animationDelay: '0.9s' }}>
               Our approach is unconventional. While others announce their moves, we work silently, 
               strategically, and with surgical precision. Every case is handled with the utmost 
               discretion, ensuring our clients' interests remain protected at every turn.
             </p>
 
-            <div className="flex items-center gap-6">
-              <a href="#contact" className="group inline-flex items-center gap-3 text-primary hover:text-gold-light transition-colors">
+            <div className="flex items-center gap-6 animate-fade-in-left" style={{ animationDelay: '1.1s' }}>
+              <a href="#contact" className="group inline-flex items-center gap-3 text-primary hover:text-sapphire-light transition-colors">
                 <span className="text-lg font-medium">Start Your Case</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </a>
@@ -102,7 +102,7 @@ const About = () => {
 
           {/* Right - Visual Element */}
           <div className={`relative transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="relative">
+            <div className="relative animate-scale-in" style={{ animationDelay: '0.7s' }}>
               {/* Main Quote Card */}
               <div className="bg-gradient-to-br from-card via-noir-medium to-card border border-border/50 rounded-lg p-10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-2xl"></div>
@@ -121,8 +121,8 @@ const About = () => {
               </div>
 
               {/* Floating Decoration */}
-              <div className="absolute -bottom-6 -right-6 w-24 h-24 border-2 border-primary/30 rounded-lg animate-float"></div>
-              <div className="absolute -top-6 -left-6 w-16 h-16 border border-primary/20 rounded-full"></div>
+              <div className="absolute -bottom-6 -right-6 w-24 h-24 border-2 border-primary/30 rounded-lg animate-float delay-500"></div>
+              <div className="absolute -top-6 -left-6 w-16 h-16 border border-primary/20 rounded-full animate-float"></div>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@ const About = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`group relative bg-gradient-to-b from-card to-background border border-border/50 rounded-lg p-8 hover:border-primary/40 transition-all duration-500 overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`group relative bg-gradient-to-b from-card to-background border border-border/50 rounded-lg p-8 hover:border-primary/40 transition-all duration-500 overflow-hidden ${isVisible ? 'opacity-100 translate-y-0 animate-reveal-up' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${600 + index * 150}ms` }}
             >
               {/* Glow Effect */}
@@ -157,7 +157,7 @@ const About = () => {
               </div>
 
               {/* Bottom Accent */}
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-primary to-gold-light group-hover:w-full transition-all duration-700"></div>
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-primary to-sapphire-light group-hover:w-full transition-all duration-700"></div>
             </div>
           ))}
         </div>

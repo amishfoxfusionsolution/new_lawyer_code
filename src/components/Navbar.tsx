@@ -107,12 +107,12 @@ const Navbar = () => {
               ) : user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="outline" className="border-gold/30 hover:border-gold gap-2">
+                    <Button variant="outline" className="border-primary/30 hover:border-primary gap-2">
                       {role && roleIcons[role]}
                       <span className="max-w-[120px] truncate">{user.email?.split('@')[0]}</span>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56 bg-secondary border-gold/20">
+                  <DropdownMenuContent className="w-56 bg-secondary border-primary/20">
                     <DropdownMenuLabel className="text-muted-foreground">
                       {role && (
                         <span className="flex items-center gap-2">
@@ -121,7 +121,7 @@ const Navbar = () => {
                         </span>
                       )}
                     </DropdownMenuLabel>
-                    <DropdownMenuSeparator className="bg-gold/10" />
+                    <DropdownMenuSeparator className="bg-primary/10" />
                     <DropdownMenuItem 
                       onClick={handleSignOut}
                       className="text-red-400 focus:text-red-300 focus:bg-red-500/10 cursor-pointer"
@@ -168,13 +168,13 @@ const Navbar = () => {
                     {link.name}
                   </a>
                 ))}
-                <div className="border-t border-gold/10 pt-4 mt-2 flex flex-col gap-3">
+                <div className="border-t border-primary/10 pt-4 mt-2 flex flex-col gap-3">
                   {user ? (
                     <>
                       <div className="flex items-center gap-2 text-muted-foreground py-2">
                         {role && roleIcons[role]}
                         <span>{user.email}</span>
-                        {role && <span className="text-gold text-xs">({roleLabels[role]})</span>}
+                        {role && <span className="text-primary text-xs">({roleLabels[role]})</span>}
                       </div>
                       <Button variant="outline" onClick={handleSignOut} className="border-red-500/30 text-red-400">
                         <LogOut className="w-4 h-4 mr-2" />

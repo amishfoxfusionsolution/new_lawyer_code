@@ -53,24 +53,24 @@ const Contact = () => {
     <section id="contact" ref={sectionRef} className="py-32 bg-gradient-to-b from-background via-card to-background relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-      <div className="absolute top-40 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-40 left-20 w-72 h-72 bg-primary/3 rounded-full blur-3xl"></div>
+      <div className="absolute top-40 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-glow-pulse"></div>
+      <div className="absolute bottom-40 left-20 w-72 h-72 bg-primary/3 rounded-full blur-3xl animate-glow-pulse delay-1000"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-3 mb-6">
-            <span className="w-12 h-px bg-primary"></span>
+          <div className="inline-flex items-center gap-3 mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
             <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Contact Us</span>
-            <span className="w-12 h-px bg-primary"></span>
+            <span className="w-12 h-px bg-primary animate-line-grow"></span>
           </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8">
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-8 animate-reveal-up" style={{ animationDelay: '0.3s' }}>
             Begin Your Case{" "}
-            <span className="bg-gradient-to-r from-primary to-gold-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
               In Confidence
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg animate-reveal-up" style={{ animationDelay: '0.5s' }}>
             Every conversation is protected by attorney-client privilege. Reach out through 
             your preferred secure channel.
           </p>
@@ -83,8 +83,8 @@ const Contact = () => {
               {contactInfo.map((item, index) => (
                 <div
                   key={item.title}
-                  className="group flex items-start gap-5 p-5 bg-card/50 border border-border/30 rounded-lg hover:border-primary/30 hover:bg-card transition-all duration-500"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group flex items-start gap-5 p-5 bg-card/50 border border-border/30 rounded-lg hover:border-primary/30 hover:bg-card transition-all duration-500 animate-fade-in-left"
+                  style={{ animationDelay: `${600 + index * 150}ms` }}
                 >
                   <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
                     <item.icon className="text-primary w-6 h-6" />
@@ -100,7 +100,7 @@ const Contact = () => {
             </div>
 
             {/* Trust Badge */}
-            <div className="mt-10 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg">
+            <div className="mt-10 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg animate-scale-in" style={{ animationDelay: '1.5s' }}>
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center animate-glow-pulse">
                   <Shield className="w-6 h-6 text-primary" />
@@ -116,7 +116,7 @@ const Contact = () => {
 
           {/* Right - Form */}
           <div className={`lg:col-span-3 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-            <div className="bg-card border border-border/50 rounded-lg p-8 lg:p-10 relative overflow-hidden">
+            <div className="bg-card border border-border/50 rounded-lg p-8 lg:p-10 relative overflow-hidden animate-fade-in-right" style={{ animationDelay: '0.7s' }}>
               {/* Form Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl"></div>
               

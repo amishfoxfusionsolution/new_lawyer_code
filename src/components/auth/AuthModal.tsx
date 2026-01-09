@@ -155,7 +155,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-secondary border-gold/20">
+      <DialogContent className="sm:max-w-md bg-secondary border-primary/20">
         <DialogHeader>
           <div className="flex items-center justify-center mb-4">
             <AnimatedScales size={48} />
@@ -178,7 +178,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-background border-gold/20 focus:border-gold"
+                className="bg-background border-primary/20 focus:border-primary"
                 placeholder="you@example.com"
                 required
               />
@@ -187,7 +187,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
+              className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
             >
               {loading ? 'Sending...' : 'Send Reset Link'}
             </Button>
@@ -195,7 +195,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
             <button
               type="button"
               onClick={() => setView('login')}
-              className="flex items-center justify-center gap-2 w-full text-gold hover:text-gold-light text-sm transition-colors"
+              className="flex items-center justify-center gap-2 w-full text-primary hover:text-sapphire-light text-sm transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Login
@@ -215,8 +215,8 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                       onClick={() => setLoginIntentRole(option.value)}
                       className={`p-4 rounded-lg border transition-all duration-300 text-center ${
                         loginIntentRole === option.value
-                          ? 'border-gold bg-gold/10 text-gold'
-                          : 'border-gold/20 bg-background hover:border-gold/40 text-muted-foreground'
+                          ? 'border-primary bg-primary/10 text-primary'
+                          : 'border-primary/20 bg-background hover:border-primary/40 text-muted-foreground'
                       }`}
                     >
                       <div className="flex flex-col items-center gap-2">
@@ -236,7 +236,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="you@example.com"
                   required
                 />
@@ -248,7 +248,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   <button
                     type="button"
                     onClick={() => setView('forgot-password')}
-                    className="text-xs text-gold hover:text-gold-light transition-colors"
+                    className="text-xs text-primary hover:text-sapphire-light transition-colors"
                   >
                     Forgot password?
                   </button>
@@ -258,7 +258,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="••••••••"
                   required
                   minLength={6}
@@ -268,7 +268,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
+                className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
               >
                 {loading ? 'Signing In...' : 'Sign In'}
               </Button>
@@ -278,7 +278,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
               <button
                 type="button"
                 onClick={() => setView('signup')}
-                className="text-gold hover:text-gold-light text-sm transition-colors"
+                className="text-primary hover:text-sapphire-light text-sm transition-colors"
               >
                 Don't have an account? Sign up
               </button>
@@ -294,7 +294,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="John Doe"
                   required
                 />
@@ -310,8 +310,8 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                       onClick={() => setSelectedRole(option.value)}
                       className={`p-4 rounded-lg border transition-all duration-300 text-center ${
                         selectedRole === option.value
-                          ? 'border-gold bg-gold/10 text-gold'
-                          : 'border-gold/20 bg-background hover:border-gold/40 text-muted-foreground'
+                          ? 'border-primary bg-primary/10 text-primary'
+                          : 'border-primary/20 bg-background hover:border-primary/40 text-muted-foreground'
                       }`}
                     >
                       <div className="flex flex-col items-center gap-2">
@@ -330,7 +330,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="you@example.com"
                   required
                 />
@@ -343,7 +343,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="+1234567890"
                   required
                 />
@@ -356,7 +356,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background border-gold/20 focus:border-gold"
+                  className="bg-background border-primary/20 focus:border-primary"
                   placeholder="••••••••"
                   required
                   minLength={6}
@@ -366,7 +366,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
+                className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
               >
                 {loading ? 'Please wait...' : 'Create Account'}
               </Button>
@@ -376,7 +376,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
               <button
                 type="button"
                 onClick={() => setView('login')}
-                className="text-gold hover:text-gold-light text-sm transition-colors"
+                className="text-primary hover:text-sapphire-light text-sm transition-colors"
               >
                 Already have an account? Sign in
               </button>

@@ -15,7 +15,7 @@
     --popover: 0 0% 7%;
     --popover-foreground: 45 20% 95%;
 
-    --primary: 43 74% 49%;
+    --primary: 210 60% 40%; /* New Primary: Sapphire Blue */
     --primary-foreground: 0 0% 4%;
 
     --secondary: 0 0% 12%;
@@ -24,7 +24,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 43 74% 49%;
+    --accent: 210 60% 40%; /* New Accent: Sapphire Blue */
     --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,25 +32,25 @@
 
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 43 74% 49%;
+    --ring: 210 60% 40%; /* New Ring: Sapphire Blue */
 
     --radius: 0.25rem;
 
     /* Custom tokens */
-    --gold: 43 74% 49%;
-    --gold-light: 43 80% 60%;
-    --gold-dark: 43 70% 35%;
+    --sapphire: 210 60% 40%; /* New Sapphire Blue */
+    --sapphire-light: 210 70% 55%;
+    --sapphire-dark: 210 50% 25%;
     --noir: 0 0% 4%;
     --noir-light: 0 0% 8%;
     --noir-medium: 0 0% 12%;
 
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(43 74% 49%), hsl(43 80% 60%));
+    --gradient-sapphire: linear-gradient(135deg, hsl(var(--sapphire)), hsl(var(--sapphire-light)));
     --gradient-noir: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 8%));
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 4%) 0%, hsl(0 0% 8%) 50%, hsl(0 0% 4%) 100%);
 
     /* Shadows */
-    --shadow-gold: 0 0 40px hsl(43 74% 49% / 0.15);
+    --shadow-sapphire: 0 0 40px hsl(210 60% 40% / 0.15);
     --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
     --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
 
@@ -75,19 +75,19 @@
     --card-foreground: 45 20% 95%;
     --popover: 0 0% 7%;
     --popover-foreground: 45 20% 95%;
-    --primary: 43 74% 49%;
+    --primary: 210 60% 40%; /* New Primary: Sapphire Blue */
     --primary-foreground: 0 0% 4%;
     --secondary: 0 0% 12%;
     --secondary-foreground: 45 20% 95%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
-    --accent: 43 74% 49%;
+    --accent: 210 60% 40%; /* New Accent: Sapphire Blue */
     --accent-foreground: 0 0% 4%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 0 0% 18%;
     --input: 0 0% 18%;
-    --ring: 43 74% 49%;
+    --ring: 210 60% 40%; /* New Ring: Sapphire Blue */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -114,21 +114,21 @@
 }
 
 @layer utilities {
-  .text-gradient-gold {
+  .text-gradient-sapphire {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-gold);
+    background-image: var(--gradient-sapphire);
   }
 
-  .bg-gradient-gold {
-    background-image: var(--gradient-gold);
+  .bg-gradient-sapphire {
+    background-image: var(--gradient-sapphire);
   }
 
   .bg-gradient-noir {
     background-image: var(--gradient-noir);
   }
 
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
+  .shadow-sapphire {
+    box-shadow: var(--shadow-sapphire);
   }
 
   .shadow-elegant {
@@ -230,4 +230,3 @@
   animation: scaleBalance 3s ease-in-out infinite;
   transform-origin: center 30%;
 }
-

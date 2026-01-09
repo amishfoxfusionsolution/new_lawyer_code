@@ -66,25 +66,25 @@ const PracticeAreas = () => {
     <section id="practice" ref={sectionRef} className="py-32 bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233B82F6' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div>
+          <div className="animate-fade-in-left" style={{ animationDelay: '0.1s' }}>
             <div className="inline-flex items-center gap-3 mb-6">
-              <span className="w-12 h-px bg-primary"></span>
+              <span className="w-12 h-px bg-primary animate-line-grow"></span>
               <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Our Expertise</span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground leading-tight">
               Practice{" "}
-              <span className="bg-gradient-to-r from-primary to-gold-light bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
                 Areas
               </span>
             </h2>
           </div>
-          <p className="text-muted-foreground text-lg max-w-xl lg:text-right">
+          <p className="text-muted-foreground text-lg max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
             Our attorneys bring decades of specialized experience across multiple legal disciplines, 
             ensuring comprehensive representation for even the most complex cases.
           </p>
@@ -95,8 +95,8 @@ const PracticeAreas = () => {
           {practices.map((practice, index) => (
             <div
               key={practice.title}
-              className={`group relative bg-card p-8 lg:p-10 transition-all duration-700 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group relative bg-card p-8 lg:p-10 transition-all duration-700 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0 animate-reveal-up' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${400 + index * 100}ms` }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -129,7 +129,7 @@ const PracticeAreas = () => {
               </div>
 
               {/* Bottom Line */}
-              <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-gold-light transition-all duration-700 ${hoveredIndex === index ? 'w-full' : 'w-0'}`}></div>
+              <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-sapphire-light transition-all duration-700 ${hoveredIndex === index ? 'w-full' : 'w-0'}`}></div>
             </div>
           ))}
         </div>
