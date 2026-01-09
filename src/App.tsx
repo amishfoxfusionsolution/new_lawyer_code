@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
 import ResetPassword from "./pages/ResetPassword";
-import LawyerDashboard from "./pages/LawyerDashboard"; // Import the new dashboard
+import LawyerDashboard from "./pages/LawyerDashboard";
+import AdminDashboard from "./pages/AdminDashboard"; // Import Admin Dashboard
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,7 +22,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/reset-password" element={<ResetPassword />} />
-            <Route path="/dashboard/lawyer" element={<LawyerDashboard />} /> {/* New Lawyer Dashboard Route */}
+            <Route path="/dashboard/lawyer" element={<LawyerDashboard />} />
+            <Route path="/dashboard/admin" element={<AdminDashboard />} /> {/* New Admin Dashboard Route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

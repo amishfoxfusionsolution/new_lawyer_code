@@ -32,12 +32,17 @@ const Index = () => {
     return <Navigate to="/dashboard/lawyer" replace />;
   }
 
+  // Redirect admins to their dashboard
+  if (user && role === 'admin') {
+    return <Navigate to="/dashboard/admin" replace />;
+  }
+
   // Show landing page if not authenticated
   if (!user) {
     return <LandingPage />;
   }
 
-  // Show main content if authenticated (user or admin)
+  // Show main content if authenticated as a standard user
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
