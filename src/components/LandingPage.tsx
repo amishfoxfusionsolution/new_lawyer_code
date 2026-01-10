@@ -53,8 +53,14 @@ const LandingPage = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div
-            className="absolute inset-[-10%] bg-cover bg-center bg-no-repeat animate-scale-balance"
-            style={{ backgroundImage: `url(${heroBg})` }}
+            className="absolute bg-cover bg-center bg-no-repeat animate-scale-balance"
+            style={{ 
+              backgroundImage: `url(${heroBg})`,
+              top: '-5%', 
+              bottom: '-5%', 
+              left: '-5%', 
+              right: '-5%' 
+            }}
           />
           {/* Dark overlay to ensure text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-secondary/80 to-background/90" />
@@ -94,25 +100,6 @@ const LandingPage = () => {
               >
                 Already a Member
               </Button>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mt-16">
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-                <Shield className="w-10 h-10 text-primary mb-4 mx-auto" />
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">For Clients</h3>
-                <p className="text-muted-foreground text-sm">Access top-tier legal services with complete confidentiality</p>
-              </div>
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
-                <Briefcase className="w-10 h-10 text-primary mb-4 mx-auto" />
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">For Lawyers</h3>
-                <p className="text-muted-foreground text-sm">Join an elite network of legal professionals</p>
-              </div>
-              <div className="p-6 rounded-lg bg-secondary/50 border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
-                <Users className="w-10 h-10 text-primary mb-4 mx-auto" />
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">Trusted Network</h3>
-                <p className="text-muted-foreground text-sm">Connect with verified professionals worldwide</p>
-              </div>
             </div>
           </div>
         </div>
