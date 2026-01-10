@@ -74,6 +74,8 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
         toast.error(error.message);
       } else {
         toast.success('Welcome back!');
+        // Force a full page reload to trigger the Index component's redirection logic immediately
+        window.location.href = '/'; 
         onClose();
         resetForm();
       }
