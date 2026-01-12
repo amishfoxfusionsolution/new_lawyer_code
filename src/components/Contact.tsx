@@ -7,6 +7,15 @@ import { toast } from "sonner";
 import { hasRequestedConsultationBefore, saveConsultationRequest } from "@/utils/consultation";
 import PaymentPromptModal from "./PaymentPromptModal";
 
+interface ConsultationRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 const contactInfo = [
   {
     icon: MapPin,
@@ -47,6 +56,7 @@ const Contact = () => {
 
   // Payment State
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [paymentData, setPaymentData] = useState<ConsultationRequest | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,20 +76,10 @@ const Contact = () => {
   }, []);
 
   const handlePaymentSuccess = async () => {
-    // This function is called by the PaymentPromptModal's Razorpay handler 
-    // after a successful payment is confirmed (or simulated).
+    if (!paymentData) return;
     
-    const formData = {
-      firstName,
-      lastName,
-      email,
-      phone,
-      subject,
-      message,
-    };
-
     // Save the consultation request now that payment is confirmed
-    await saveConsultationRequest(formData); 
+    await saveConsultationRequest(paymentData); 
     
     // Clear form fields after successful submission
     setFirstName("");
@@ -89,6 +89,7 @@ const Contact = () => {
     setSubject("");
     setMessage("");
     setIsConsentChecked(false);
+    setPaymentData(null); // Clear payment data
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -104,7 +105,7 @@ const Contact = () => {
 
     setIsSubmitting(true);
 
-    const formData = {
+    const formData: ConsultationRequest = {
       firstName,
       lastName,
       email,
@@ -118,6 +119,7 @@ const Contact = () => {
 
       if (isReturningUser) {
         // Returning user: Trigger payment modal which handles Razorpay
+        setPaymentData(formData); // Store data before opening modal
         setIsPaymentModalOpen(true);
       } else {
         // First-time user: Free consultation
@@ -357,6 +359,7 @@ const Contact = () => {
         isOpen={isPaymentModalOpen}
         onClose={() => setIsPaymentModalOpen(false)}
         onPay={handlePaymentSuccess}
+        formData={paymentData}
       />
     </section>
   );

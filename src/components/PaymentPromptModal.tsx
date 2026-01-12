@@ -11,10 +11,20 @@ declare global {
   }
 }
 
+interface ConsultationRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 interface PaymentPromptModalProps {
   isOpen: boolean;
   onClose: () => void;
   onPay: () => void;
+  formData: ConsultationRequest | null;
 }
 
 // Utility function to load the Razorpay script
@@ -28,7 +38,7 @@ const loadRazorpayScript = (src: string) => {
   });
 };
 
-const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose, onPay }) => {
+const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose, onPay, formData }) => {
   
   // Load Razorpay script when the component mounts
   useEffect(() => {
@@ -36,6 +46,19 @@ const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose
   }, []);
 
   const displayRazorpay = async () => {
+    if (!formData) {
+      toast.error("Form data missing. Please try submitting again.");
+      onClose();
+      return;
+    }
+
+    const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
+    if (!RAZORPAY_KEY_ID) {
+      toast.error("Razorpay Key ID is missing. Please set VITE_RAZORPAY_KEY_ID in your .env file.");
+      onClose();
+      return;
+    }
+
     // --- IMPORTANT: SERVER-SIDE INTEGRATION REQUIRED ---
     // In a real application, you must call your backend (e.g., a Netlify Function) 
     // here to securely create a Razorpay Order ID.
@@ -53,7 +76,7 @@ const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose
     }
 
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Replace with your actual Key ID
+      key: RAZORPAY_KEY_ID, // Use the checked Key ID
       amount: mockOrderResponse.amount,
       currency: mockOrderResponse.currency,
       name: "Unseen Lawyers Consultation",
@@ -69,10 +92,10 @@ const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose
         onPay(); 
       },
       prefill: {
-        // Prefill details from the contact form if available
-        name: "Client Name", 
-        email: "client@example.com",
-        contact: "9999999999",
+        // Prefill details from the contact form
+        name: `${formData.firstName} ${formData.lastName}`, 
+        email: formData.email,
+        contact: formData.phone,
       },
       theme: {
         color: "#2563eb" // Primary color (Sapphire Blue)
