@@ -3,39 +3,39 @@ import { useEffect, useRef, useState } from "react";
 
 const practices = [
   {
-    icon: Briefcase,
-    title: "Corporate Law",
-    description: "Strategic counsel for mergers, acquisitions, and complex business transactions with absolute confidentiality.",
+    icon: Gavel,
+    title: "Criminal Law",
+    description: "Bail, FIR, trials, cheque bounce, and criminal complaints.",
     number: "01",
+  },
+  {
+    icon: FileText,
+    title: "Civil Law",
+    description: "Property disputes, recovery suits, injunctions, contracts, and civil litigation.",
+    number: "02",
   },
   {
     icon: Users,
     title: "Family Law",
-    description: "Discreet handling of sensitive family matters including divorce, custody, and estate planning.",
-    number: "02",
-  },
-  {
-    icon: Building2,
-    title: "Real Estate",
-    description: "Expert navigation of high-value property transactions and commercial real estate disputes.",
+    description: "Divorce, maintenance, domestic violence, child custody, and matrimonial disputes.",
     number: "03",
   },
   {
-    icon: FileText,
-    title: "Civil Litigation",
-    description: "Aggressive representation in complex civil disputes with a focus on favorable settlements.",
+    icon: Briefcase,
+    title: "Corporate & Business Law",
+    description: "Company incorporation, legal notices, contracts, compliance, and business disputes.",
     number: "04",
   },
   {
-    icon: Gavel,
-    title: "Criminal Defense",
-    description: "Unwavering defense for clients facing serious charges, protecting rights and reputation.",
+    icon: Lock,
+    title: "Legal Documentation",
+    description: "Agreements, deeds, wills, affidavits, and power of attorney.",
     number: "05",
   },
   {
-    icon: Lock,
-    title: "Drafting",
-    description: "Drafting for any legal document professionally.",
+    icon: Building2,
+    title: "Supreme Court & High Court",
+    description: "SLPs, writ petitions, appeals, and constitutional matters.",
     number: "06",
   },
 ];
@@ -75,18 +75,17 @@ const PracticeAreas = () => {
           <div className="animate-fade-in-left" style={{ animationDelay: '0.1s' }}>
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="w-12 h-px bg-primary animate-line-grow"></span>
-              <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Our Expertise</span>
+              <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Our Services</span>
             </div>
             <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground leading-tight">
-              Practice{" "}
+              Legal{" "}
               <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
-                Areas
+                Guidance
               </span>
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
-            Our attorneys bring decades of specialized experience across multiple legal disciplines, 
-            ensuring comprehensive representation for even the most complex cases.
+            At Legal Salahkaar, we provide clear legal guidance and connect you with the right advocate for your matter. Simple, confidential, and effective.
           </p>
         </div>
 
