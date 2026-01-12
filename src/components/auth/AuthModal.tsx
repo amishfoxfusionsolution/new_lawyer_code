@@ -283,19 +283,6 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
         ) : (
           <>
             <form onSubmit={handleSignupSubmit} className="space-y-6 mt-4">
-              <div className="space-y-2">
-                <Label htmlFor="fullName" className="text-muted-foreground">Full Name</Label>
-                <Input
-                  id="fullName"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-
               <div className="space-y-3">
                 <Label className="text-muted-foreground">I am a...</Label>
                 <div className="grid grid-cols-2 gap-3">
@@ -317,6 +304,19 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                     </button>
                   ))}
                 </div>
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="fullName" className="text-muted-foreground">Full Name</Label>
+                <Input
+                  id="fullName"
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="bg-background border-primary/20 focus:border-primary"
+                  placeholder="John Doe"
+                  required
+                />
               </div>
 
               <div className="space-y-2">
