@@ -65,6 +65,32 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handlePaymentSuccess = async () => {
+    // This function is called by the PaymentPromptModal's Razorpay handler 
+    // after a successful payment is confirmed (or simulated).
+    
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      subject,
+      message,
+    };
+
+    // Save the consultation request now that payment is confirmed
+    await saveConsultationRequest(formData); 
+    
+    // Clear form fields after successful submission
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setSubject("");
+    setMessage("");
+    setIsConsentChecked(false);
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isConsentChecked) {
@@ -72,7 +98,7 @@ const Contact = () => {
       return;
     }
     if (!email || !firstName || !message) {
-      toast.error("Please fill in required fields (Name, Email, Description).");
+      toast.error("Please fill in required fields (First Name, Email, Description).");
       return;
     }
 
@@ -91,7 +117,7 @@ const Contact = () => {
       const isReturningUser = await hasRequestedConsultationBefore(email);
 
       if (isReturningUser) {
-        // Returning user: Trigger payment flow
+        // Returning user: Trigger payment modal which handles Razorpay
         setIsPaymentModalOpen(true);
       } else {
         // First-time user: Free consultation
@@ -111,21 +137,6 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handlePaymentInitiation = () => {
-    // This function simulates triggering Razorpay.
-    // In a real implementation, this would call a Netlify Function 
-    // to create a Razorpay Order ID and then open the Razorpay checkout window.
-    
-    setIsPaymentModalOpen(false);
-    toast.info("Simulating Razorpay Checkout for ₹99. (Backend integration required)");
-    
-    // For demonstration, we'll simulate success after a delay
-    setTimeout(() => {
-      toast.success("Payment simulated successfully! Your consultation request is now being processed.");
-      // In a real app, this would be triggered by a Razorpay webhook.
-    }, 2000);
   };
 
   return (
@@ -345,7 +356,7 @@ const Contact = () => {
       <PaymentPromptModal
         isOpen={isPaymentModalOpen}
         onClose={() => setIsPaymentModalOpen(false)}
-        onPay={handlePaymentInitiation}
+        onPay={handlePaymentSuccess}
       />
     </section>
   );

@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { DollarSign, ArrowRight } from 'lucide-react';
+import { toast } from 'sonner';
+
+// Define Razorpay type globally for TypeScript
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 interface PaymentPromptModalProps {
   isOpen: boolean;
@@ -9,7 +17,78 @@ interface PaymentPromptModalProps {
   onPay: () => void;
 }
 
+// Utility function to load the Razorpay script
+const loadRazorpayScript = (src: string) => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose, onPay }) => {
+  
+  // Load Razorpay script when the component mounts
+  useEffect(() => {
+    loadRazorpayScript('https://checkout.razorpay.com/v1/checkout.js');
+  }, []);
+
+  const displayRazorpay = async () => {
+    // --- IMPORTANT: SERVER-SIDE INTEGRATION REQUIRED ---
+    // In a real application, you must call your backend (e.g., a Netlify Function) 
+    // here to securely create a Razorpay Order ID.
+    
+    // Mocking the API call response for the frontend structure:
+    const mockOrderResponse = {
+      order_id: 'order_mock_12345', // Replace with actual Order ID from backend
+      amount: 9900, // Amount in paise (99 INR)
+      currency: 'INR',
+    };
+
+    if (!window.Razorpay) {
+      toast.error("Razorpay script failed to load. Please refresh.");
+      return;
+    }
+
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID, // Replace with your actual Key ID
+      amount: mockOrderResponse.amount,
+      currency: mockOrderResponse.currency,
+      name: "Unseen Lawyers Consultation",
+      description: "Returning Client Consultation Fee",
+      order_id: mockOrderResponse.order_id,
+      handler: function (response: any) {
+        // This handler is called on successful payment.
+        // You MUST verify this payment on your backend using the response data (razorpay_payment_id, razorpay_order_id, razorpay_signature).
+        toast.success("Payment successful! Verifying details...");
+        console.log("Razorpay Response:", response);
+        
+        // Call the parent component's success handler
+        onPay(); 
+      },
+      prefill: {
+        // Prefill details from the contact form if available
+        name: "Client Name", 
+        email: "client@example.com",
+        contact: "9999999999",
+      },
+      theme: {
+        color: "#2563eb" // Primary color (Sapphire Blue)
+      }
+    };
+
+    const rzp1 = new window.Razorpay(options);
+    rzp1.on('payment.failed', function (response: any) {
+      toast.error(`Payment failed: ${response.error.description}`);
+      console.error("Payment Failed:", response.error);
+    });
+    
+    rzp1.open();
+    onClose(); // Close the modal once the Razorpay window opens
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-secondary border-primary/20">
@@ -36,7 +115,7 @@ const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose
           </p>
           
           <Button
-            onClick={onPay}
+            onClick={displayRazorpay}
             className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3 shadow-lg shadow-gold/20 group"
           >
             Pay ₹99 via Razorpay
