@@ -37,9 +37,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'login' | 'signup'>('login');
-  const { user, role, signOut, loading } = useAuth();
+  const { user, role, fullName, signOut, loading } = useAuth();
   
-  const username = user?.email?.split('@')[0] || 'Profile';
+  // Use fullName if available, otherwise fall back to email prefix
+  const displayName = fullName || (user?.email?.split('@')[0] || 'Profile');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,7 +111,7 @@ const Navbar = () => {
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" className="border-primary/30 hover:border-primary gap-2">
                       {role && roleIcons[role]}
-                      <span className="max-w-[120px] truncate">{username}</span>
+                      <span className="max-w-[120px] truncate">{displayName}</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56 bg-secondary border-primary/20">
@@ -174,7 +175,7 @@ const Navbar = () => {
                     <>
                       <div className="flex items-center gap-2 text-muted-foreground py-2">
                         {role && roleIcons[role]}
-                        <span>{username}</span>
+                        <span>{displayName}</span>
                         {role && <span className="text-primary text-xs">({roleLabels[role]})</span>}
                       </div>
                       <Button variant="outline" onClick={handleSignOut} className="border-red-500/30 text-red-400">

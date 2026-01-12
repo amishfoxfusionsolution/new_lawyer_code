@@ -8,6 +8,7 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   role: AppRole | null;
+  fullName: string | null; // Added fullName
   loading: boolean;
   signUp: (email: string, password: string, fullName: string, role: AppRole, phone?: string) => Promise<{ error: Error | null }>;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
@@ -20,17 +21,35 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [role, setRole] = useState<AppRole | null>(null);
+  const [fullName, setFullName] = useState<string | null>(null); // State for full name
   const [loading, setLoading] = useState(true);
 
-  const fetchUserRole = async (userId: string) => {
-    const { data, error } = await supabase
+  const fetchUserData = async (userId: string) => {
+    // Fetch Role
+    const { data: roleData, error: roleError } = await supabase
       .from('user_roles')
       .select('role')
       .eq('user_id', userId)
       .maybeSingle();
     
-    if (data && !error) {
-      setRole(data.role as AppRole);
+    if (roleData && !roleError) {
+      setRole(roleData.role as AppRole);
+    } else {
+      setRole(null);
+    }
+
+    // Fetch Full Name
+    const { data: profileData, error: profileError } = await supabase
+      .from('profiles')
+      .select('full_name')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (profileData && !profileError) {
+      setFullName(profileData.full_name);
+    } else {
+      // Fallback to null if profile doesn't exist or name is missing
+      setFullName(null);
     }
   };
 
@@ -43,9 +62,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         
         if (session?.user) {
           // Use setTimeout to avoid blocking the auth state change
-          setTimeout(() => fetchUserRole(session.user.id), 0);
+          setTimeout(() => fetchUserData(session.user.id), 0);
         } else {
           setRole(null);
+          setFullName(null);
         }
         setLoading(false);
       }
@@ -56,7 +76,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
-        fetchUserRole(session.user.id);
+        fetchUserData(session.user.id);
       }
       setLoading(false);
     });
@@ -64,14 +84,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, fullName: string, role: AppRole, phone?: string) => {
+  const signUp = async (email: string, password: string, newFullName: string, role: AppRole, phone?: string) => {
     const { error } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: window.location.origin,
         data: {
-          full_name: fullName,
+          full_name: newFullName,
           role: role,
           phone: phone,
         },
@@ -93,10 +113,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
     setSession(null);
     setRole(null);
+    setFullName(null); // Clear full name on sign out
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, role, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, session, role, fullName, loading, signUp, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
