@@ -18,7 +18,7 @@ interface AuthModalProps {
   defaultTab?: 'login' | 'signup';
 }
 
-const roleOptions: { value: AppRole; label: string; icon: React.ReactNode; description: string }[] = [
+const roleOptions: { value: 'user' | 'lawyer'; label: string; icon: React.ReactNode; description: string }[] = [
   { 
     value: 'user', 
     label: 'Client', 
@@ -30,12 +30,6 @@ const roleOptions: { value: AppRole; label: string; icon: React.ReactNode; descr
     label: 'Lawyer', 
     icon: <Briefcase className="w-5 h-5" />,
     description: 'Legal professional'
-  },
-  { 
-    value: 'admin', 
-    label: 'Admin', 
-    icon: <Shield className="w-5 h-5" />,
-    description: 'System administrator'
   },
 ];
 
@@ -58,7 +52,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [fullName, setFullName] = useState('');
-  const [selectedRole, setSelectedRole] = useState<AppRole>('user');
+  const [selectedRole, setSelectedRole] = useState<'user' | 'lawyer'>('user');
   const [loading, setLoading] = useState(false);
   const [loginIntentRole, setLoginIntentRole] = useState<'user' | 'lawyer'>('user');
   const { signIn, signUp } = useAuth();
@@ -304,7 +298,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
 
               <div className="space-y-3">
                 <Label className="text-muted-foreground">I am a...</Label>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {roleOptions.map((option) => (
                     <button
                       key={option.value}
