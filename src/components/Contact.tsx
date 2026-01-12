@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock, Send, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 const contactInfo = [
   {
@@ -30,7 +32,7 @@ const Contact = () => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [phone, setPhone] = useState("");
-  
+  const [isConsentChecked, setIsConsentChecked] = useState(false); // New state for consent
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,27 +163,27 @@ const Contact = () => {
                   />
                 </div>
                 <div className="relative">
-  <label
-    htmlFor="phone"
-    className={`absolute left-4 transition-all duration-300 ${
-      focusedField === "phone"
-        ? "-top-2.5 text-xs text-primary bg-card px-2"
-        : "top-3.5 text-muted-foreground"
-    }`}
-  >
-    Phone Number
-  </label>
-  <input
-    type="tel"
-    id="phone"
-    className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
-    onFocus={() => setFocusedField("phone")}
-    onBlur={(e) => !e.target.value && setFocusedField(null)}
-    value={phone}
-    onChange={(e) => setPhone(e.target.value)}
-    placeholder=""
-  />
-</div>
+                  <label
+                    htmlFor="phone"
+                    className={`absolute left-4 transition-all duration-300 ${
+                      focusedField === "phone"
+                        ? "-top-2.5 text-xs text-primary bg-card px-2"
+                        : "top-3.5 text-muted-foreground"
+                    }`}
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
+                    onFocus={() => setFocusedField("phone")}
+                    onBlur={(e) => !e.target.value && setFocusedField(null)}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder=""
+                  />
+                </div>
 
 
                 <div>
@@ -214,8 +216,27 @@ const Contact = () => {
                     placeholder="Please provide a brief, non-sensitive description of your matter..."
                   ></textarea>
                 </div>
+                
+                {/* Consent Checkbox */}
+                <div className="flex items-start space-x-3 pt-2">
+                  <Checkbox 
+                    id="consent" 
+                    checked={isConsentChecked} 
+                    onCheckedChange={(checked) => setIsConsentChecked(!!checked)}
+                    className="mt-1 border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
+                  />
+                  <Label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                    I understand that Legal Salahkaar is a legal facilitation platform and does not provide legal representation. I consent to be contacted for legal guidance.
+                  </Label>
+                </div>
+                {/* End Consent Checkbox */}
 
-                <Button variant="hero" size="xl" className="w-full group">
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="w-full group" 
+                  disabled={!isConsentChecked} // Disable button if consent is not checked
+                >
                   <span>Request Secure Consultation</span>
                   <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Button>
