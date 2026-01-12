@@ -3,6 +3,9 @@ import { MapPin, Phone, Mail, Clock, Send, Shield } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
+import { hasRequestedConsultationBefore, saveConsultationRequest } from "@/utils/consultation";
+import PaymentPromptModal from "./PaymentPromptModal";
 
 const contactInfo = [
   {
@@ -31,8 +34,19 @@ const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  
+  // Form States
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [isConsentChecked, setIsConsentChecked] = useState(false); // New state for consent
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [isConsentChecked, setIsConsentChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Payment State
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,6 +64,69 @@ const Contact = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isConsentChecked) {
+      toast.error("Please accept the terms before requesting a consultation.");
+      return;
+    }
+    if (!email || !firstName || !message) {
+      toast.error("Please fill in required fields (Name, Email, Description).");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      subject,
+      message,
+    };
+
+    try {
+      const isReturningUser = await hasRequestedConsultationBefore(email);
+
+      if (isReturningUser) {
+        // Returning user: Trigger payment flow
+        setIsPaymentModalOpen(true);
+      } else {
+        // First-time user: Free consultation
+        await saveConsultationRequest(formData);
+        // Clear form fields after successful submission
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setSubject("");
+        setMessage("");
+        setIsConsentChecked(false);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("An unexpected error occurred during submission.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePaymentInitiation = () => {
+    // This function simulates triggering Razorpay.
+    // In a real implementation, this would call a Netlify Function 
+    // to create a Razorpay Order ID and then open the Razorpay checkout window.
+    
+    setIsPaymentModalOpen(false);
+    toast.info("Simulating Razorpay Checkout for ₹99. (Backend integration required)");
+    
+    // For demonstration, we'll simulate success after a delay
+    setTimeout(() => {
+      toast.success("Payment simulated successfully! Your consultation request is now being processed.");
+      // In a real app, this would be triggered by a Razorpay webhook.
+    }, 2000);
+  };
 
   return (
     <section id="contact" ref={sectionRef} className="py-32 bg-gradient-to-b from-background via-card to-background relative overflow-hidden">
@@ -122,11 +199,11 @@ const Contact = () => {
               {/* Form Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl"></div>
               
-              <form className="space-y-6 relative z-10">
+              <form onSubmit={handleFormSubmit} className="space-y-6 relative z-10">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="relative">
-                    <label htmlFor="firstName" className={`absolute left-4 transition-all duration-300 ${focusedField === 'firstName' ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
-                      First Name
+                    <label htmlFor="firstName" className={`absolute left-4 transition-all duration-300 ${focusedField === 'firstName' || firstName ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
+                      First Name *
                     </label>
                     <input
                       type="text"
@@ -134,10 +211,13 @@ const Contact = () => {
                       className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                       onFocus={() => setFocusedField('firstName')}
                       onBlur={(e) => !e.target.value && setFocusedField(null)}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className="relative">
-                    <label htmlFor="lastName" className={`absolute left-4 transition-all duration-300 ${focusedField === 'lastName' ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
+                    <label htmlFor="lastName" className={`absolute left-4 transition-all duration-300 ${focusedField === 'lastName' || lastName ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
                       Last Name
                     </label>
                     <input
@@ -146,13 +226,15 @@ const Contact = () => {
                       className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                       onFocus={() => setFocusedField('lastName')}
                       onBlur={(e) => !e.target.value && setFocusedField(null)}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                 </div>
 
                 <div className="relative">
-                  <label htmlFor="email" className={`absolute left-4 transition-all duration-300 ${focusedField === 'email' ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
-                    Email Address
+                  <label htmlFor="email" className={`absolute left-4 transition-all duration-300 ${focusedField === 'email' || email ? '-top-2.5 text-xs text-primary bg-card px-2' : 'top-3.5 text-muted-foreground'}`}>
+                    Email Address *
                   </label>
                   <input
                     type="email"
@@ -160,13 +242,16 @@ const Contact = () => {
                     className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                     onFocus={() => setFocusedField('email')}
                     onBlur={(e) => !e.target.value && setFocusedField(null)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="relative">
                   <label
                     htmlFor="phone"
                     className={`absolute left-4 transition-all duration-300 ${
-                      focusedField === "phone"
+                      focusedField === "phone" || phone
                         ? "-top-2.5 text-xs text-primary bg-card px-2"
                         : "top-3.5 text-muted-foreground"
                     }`}
@@ -193,6 +278,8 @@ const Contact = () => {
                   <select
                     id="subject"
                     className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                   >
                     <option value="">Select a practice area</option>
                     <option value="corporate">Corporate Law</option>
@@ -207,13 +294,16 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                    Brief Description
+                    Brief Description *
                   </label>
                   <textarea
                     id="message"
                     rows={5}
                     className="w-full bg-background border border-border rounded-lg px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all duration-300 resize-none"
                     placeholder="Please provide a brief, non-sensitive description of your matter..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
                   ></textarea>
                 </div>
                 
@@ -232,12 +322,13 @@ const Contact = () => {
                 {/* End Consent Checkbox */}
 
                 <Button 
+                  type="submit"
                   variant="hero" 
                   size="xl" 
                   className="w-full group" 
-                  disabled={!isConsentChecked} // Disable button if consent is not checked
+                  disabled={!isConsentChecked || isSubmitting}
                 >
-                  <span>Request Secure Consultation</span>
+                  <span>{isSubmitting ? 'Checking Status...' : 'Request Secure Consultation'}</span>
                   <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Button>
 
@@ -250,6 +341,12 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      
+      <PaymentPromptModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        onPay={handlePaymentInitiation}
+      />
     </section>
   );
 };
