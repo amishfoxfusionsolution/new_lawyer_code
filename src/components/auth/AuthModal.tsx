@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -47,6 +47,7 @@ const loginRoleOptions: { value: 'user' | 'lawyer'; label: string; icon: React.R
 ];
 
 export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalProps) => {
+  // Initialize view state based on defaultTab
   const [view, setView] = useState<AuthView>(defaultTab);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,6 +57,13 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
   const [loading, setLoading] = useState(false);
   const [loginIntentRole, setLoginIntentRole] = useState<'user' | 'lawyer'>('user');
   const { signIn, signUp } = useAuth();
+
+  // Sync internal view state with defaultTab prop when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      setView(defaultTab);
+    }
+  }, [isOpen, defaultTab]);
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
