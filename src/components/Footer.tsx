@@ -52,7 +52,7 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-4">
-              {["About", "Practice Areas", "Team", "Testimonials", "Contact"].map((link) => (
+              {["About", "Practice Areas", "Testimonials", "Contact"].map((link) => (
                 <li key={link}>
                   <a
                     href={`#${link.toLowerCase().replace(" ", "-")}`}
@@ -127,7 +127,7 @@ const Footer = () => {
           {/* Back to Top */}
           <button
             onClick={scrollToTop}
-            className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:-translate-y-1 transition-all duration-300"
+            className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:-translate-y-1 transition-all duration-300"
           >
             <ArrowUp className="w-5 h-5" />
           </button>
