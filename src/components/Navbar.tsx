@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import logoMark from "@/assets/logo-mark.svg";
+import logoMark from "@/assets/logo-legal-salahkaar.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -78,13 +78,13 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#home" className="flex items-center gap-3 group">
               {/* Updated Logo */}
-              <img src={logoMark} alt="Unseen Lawyers Logo" className="w-10 h-10" />
+              <img src={logoMark} alt="Legal Salahkaar Logo" className="w-10 h-10" />
               <div>
                 <span className="font-display text-xl font-semibold text-foreground tracking-wide">
-                  UNSEEN
+                  LEGAL
                 </span>
                 <span className="block text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  Law Firm
+                  SALAHKAAR
                 </span>
               </div>
             </a>

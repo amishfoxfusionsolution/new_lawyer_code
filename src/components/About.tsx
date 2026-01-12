@@ -77,7 +77,7 @@ const About = () => {
           {/* Left - Text Content */}
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <p className="text-xl text-foreground/90 leading-relaxed mb-8 font-light animate-fade-in-left" style={{ animationDelay: '0.7s' }}>
-              For over two decades, Unseen Lawyers has operated in the shadows of the legal world, 
+              For over two decades, Legal Salahkaar has operated in the shadows of the legal world, 
               delivering decisive victories for clients who demand the highest level of{" "}
               <span className="text-primary font-medium">confidentiality</span> and{" "}
               <span className="text-primary font-medium">expertise</span>.

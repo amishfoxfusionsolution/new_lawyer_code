@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const testimonials = [
   {
-    quote: "When my corporation faced its darkest hour, Unseen Lawyers emerged from the shadows and orchestrated a victory that saved everything we had built. Their discretion was unmatched.",
+    quote: "When my corporation faced its darkest hour, Legal Salahkaar emerged from the shadows and orchestrated a victory that saved everything we had built. Their discretion was unmatched.",
     author: "Anonymous CEO",
     company: "Fortune 500 Company",
     rating: 5,
@@ -15,7 +15,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "They understood that some matters require not just legal expertise, but absolute confidentiality. Unseen Lawyers delivered both flawlessly.",
+    quote: "They understood that some matters require not just legal expertise, but absolute confidentiality. Legal Salahkaar delivered both flawlessly.",
     author: "Family Office Representative",
     company: "Estate Matter",
     rating: 5,

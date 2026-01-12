@@ -1,5 +1,5 @@
 import { Scale, ArrowUp, Linkedin, Twitter } from "lucide-react";
-import logoMark from "@/assets/logo-mark.svg";
+import logoMark from "@/assets/logo-legal-salahkaar.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,13 +20,13 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={scrollToTop}>
               {/* Updated Logo */}
-              <img src={logoMark} alt="Unseen Lawyers Logo" className="w-12 h-12" />
+              <img src={logoMark} alt="Legal Salahkaar Logo" className="w-12 h-12" />
               <div>
                 <span className="font-display text-2xl font-bold text-foreground tracking-wide">
-                  UNSEEN
+                  LEGAL
                 </span>
                 <span className="block text-[10px] uppercase tracking-[0.3em] text-primary">
-                  Law Firm
+                  SALAHKAAR
                 </span>
               </div>
             </div>
@@ -95,10 +95,10 @@ const Footer = () => {
             </h4>
             <div className="space-y-4 text-muted-foreground">
               <p className="hover:text-primary transition-colors cursor-pointer">
-                +1 (555) UNSEEN-1
+                +1 (555) SALAHKAAR-1
               </p>
               <p className="hover:text-primary transition-colors cursor-pointer">
-                consult@unseenlawyers.com
+                consult@legalsalahkaar.com
               </p>
               <p>
                 Private Office<br />
@@ -111,7 +111,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Unseen Lawyers. All rights reserved.
+            © {currentYear} Legal Salahkaar. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
@@ -137,7 +137,7 @@ const Footer = () => {
       {/* Large Background Text */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
         <div className="font-display text-[15vw] font-bold text-border/5 leading-none tracking-tighter whitespace-nowrap translate-y-1/4">
-          UNSEEN LAWYERS
+          LEGAL SALAHKAAR
         </div>
       </div>
     </footer>

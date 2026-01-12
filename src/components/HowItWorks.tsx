@@ -66,7 +66,7 @@ const HowItWorks = () => {
               )}
               style={{ animationDelay: `${500 + index * 150}ms` }}
             >
-              <div className="absolute top-0 left-0 w-full h-full bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-primary/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10">
                 <div className="flex items-center mb-6">
                   <span className="font-display text-5xl font-bold text-primary/20 mr-4">{index + 1}</span>

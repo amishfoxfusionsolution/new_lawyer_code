@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
 import heroBg from "@/assets/hero-bg.jpg";
-import logoMark from "@/assets/logo-mark.svg";
+import logoMark from "@/assets/logo-legal-salahkaar.png";
 
 const LandingPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -27,13 +27,13 @@ const LandingPage = () => {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Updated Logo */}
-            <img src={logoMark} alt="Unseen Lawyers Logo" className="w-10 h-10" />
+            <img src={logoMark} alt="Legal Salahkaar Logo" className="w-10 h-10" />
             <div>
               <span className="font-display text-xl font-semibold text-foreground tracking-wide">
-                UNSEEN
+                LEGAL
               </span>
               <span className="block text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Law Firm
+                SALAHKAAR
               </span>
             </div>
           </div>
@@ -108,7 +108,7 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="py-6 px-8 border-t border-primary/10 text-center">
         <p className="text-muted-foreground text-sm">
-          © 2024 Unseen Lawyers. All rights reserved. Your privacy is our priority.
+          © 2024 Legal Salahkaar. All rights reserved. Your privacy is our priority.
         </p>
       </footer>
 

@@ -23,18 +23,18 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Tagline */}
           <p className="text-primary uppercase tracking-[0.4em] text-sm mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
-            Justice in the Shadows
+            Legal Salahkaar
           </p>
 
           {/* Main Heading */}
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
             Where{" "}
             <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
-              Discretion
+              Guidance
             </span>{" "}
             Meets{" "}
             <span className="bg-gradient-to-r from-sapphire-light to-primary bg-clip-text text-transparent">
-              Excellence
+              Expertise
             </span>
           </h1>
 

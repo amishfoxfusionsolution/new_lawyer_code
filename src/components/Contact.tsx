@@ -25,12 +25,12 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Secure Line",
-    value: "+1 (555) UNSEEN-1",
+    value: "+1 (555) SALAHKAAR-1",
   },
   {
     icon: Mail,
     title: "Encrypted Email",
-    value: "consult@unseenlawyers.com",
+    value: "consult@legalsalahkaar.com",
   },
   {
     icon: Clock,
