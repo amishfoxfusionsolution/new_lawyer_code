@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
 import heroBg from "@/assets/hero-bg.jpg";
+import logoMark from "@/assets/logo-mark.svg";
 
 const LandingPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -25,9 +26,8 @@ const LandingPage = () => {
       <header className="py-6 px-8 border-b border-primary/10">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded border-2 border-primary flex items-center justify-center">
-              <span className="text-primary font-display font-bold text-lg">U</span>
-            </div>
+            {/* Updated Logo */}
+            <img src={logoMark} alt="Unseen Lawyers Logo" className="w-10 h-10" />
             <div>
               <span className="font-display text-xl font-semibold text-foreground tracking-wide">
                 UNSEEN

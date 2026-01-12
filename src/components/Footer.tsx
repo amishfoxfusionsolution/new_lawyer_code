@@ -1,4 +1,5 @@
 import { Scale, ArrowUp, Linkedin, Twitter } from "lucide-react";
+import logoMark from "@/assets/logo-mark.svg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,9 +19,8 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={scrollToTop}>
-              <div className="w-12 h-12 rounded-lg border-2 border-primary flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
-                <Scale className="text-primary group-hover:text-primary-foreground w-6 h-6 transition-colors" />
-              </div>
+              {/* Updated Logo */}
+              <img src={logoMark} alt="Unseen Lawyers Logo" className="w-12 h-12" />
               <div>
                 <span className="font-display text-2xl font-bold text-foreground tracking-wide">
                   UNSEEN

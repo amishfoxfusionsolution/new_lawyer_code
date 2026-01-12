@@ -9,6 +9,7 @@ import UserTable from '@/components/admin/UserTable';
 import LawyerTable from '@/components/admin/LawyerTable';
 import StatCard from '@/components/admin/StatCard';
 import { toast } from 'sonner';
+import logoMark from "@/assets/logo-mark.svg";
 
 const AdminDashboard = () => {
   const { user, role, loading, signOut } = useAuth();
@@ -18,7 +19,7 @@ const AdminDashboard = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="w-16 h-16 rounded-xl gradient-gold flex items-center justify-center animate-pulse glow-gold">
-          <Scale className="w-8 h-8 text-primary-foreground" />
+          <img src={logoMark} alt="Loading Logo" className="w-8 h-8 text-primary-foreground" />
         </div>
       </div>
     );
