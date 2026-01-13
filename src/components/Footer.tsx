@@ -20,8 +20,8 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={scrollToTop}>
               {/* Updated Logo */}
-              <div className="w-14 h-14 rounded-full flex items-center justify-center">
-                <img src={logoMark} alt="Legal Salahkaar Logo" className="w-12 h-12 object-contain" />
+              <div className="w-48 h-12 flex items-center justify-start">
+                <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8">

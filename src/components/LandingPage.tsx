@@ -27,8 +27,8 @@ const LandingPage = () => {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
             {/* Updated Logo */}
-            <div className="w-12 h-12 rounded-full flex items-center justify-center">
-              <img src={logoMark} alt="Legal Salahkaar Logo" className="w-11 h-11 object-contain" />
+            <div className="w-40 h-10 flex items-center justify-start">
+              <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
             </div>
           </div>
           <div className="flex items-center gap-3">
