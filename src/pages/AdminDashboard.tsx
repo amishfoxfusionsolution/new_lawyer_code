@@ -18,8 +18,8 @@ const AdminDashboard = () => {
   if (loading || isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="w-16 h-16 rounded-xl gradient-gold flex items-center justify-center animate-pulse glow-gold">
-          <img src={logoMark} alt="Loading Logo" className="w-8 h-8 text-primary-foreground" />
+        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center animate-pulse p-2">
+          <img src={logoMark} alt="Loading Logo" className="w-full h-full object-contain" />
         </div>
       </div>
     );

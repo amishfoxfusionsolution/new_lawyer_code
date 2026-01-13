@@ -20,8 +20,8 @@ const Index = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 rounded border-2 border-primary flex items-center justify-center animate-pulse">
-            <img src={logoMark} alt="Loading Logo" className="w-8 h-8 animate-pulse" />
+          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center animate-pulse p-1">
+            <img src={logoMark} alt="Loading Logo" className="w-full h-full object-contain" />
           </div>
           <p className="text-muted-foreground animate-pulse">Loading...</p>
         </div>
