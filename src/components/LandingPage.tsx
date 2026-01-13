@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Shield, Briefcase, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
-import AnimatedScales from '@/components/auth/AnimatedScales';
+import AnimatedScales from '@/components/AnimatedScales';
 import heroBg from "@/assets/hero-bg.jpg";
 import logoMark from "@/assets/logo.png";
 
@@ -27,11 +27,8 @@ const LandingPage = () => {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
             {/* Updated Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <img src={logoMark} alt="Legal Salahkaar Logo Mark" className="h-full w-auto object-contain" />
-              </div>
-              <span className="font-display text-2xl font-bold text-foreground">Legal Salahkaar</span>
+            <div className="w-56 h-14 flex items-center justify-start">
+              <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
             </div>
           </div>
           <div className="flex items-center gap-3">
