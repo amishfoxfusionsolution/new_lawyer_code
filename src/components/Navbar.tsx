@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import logoMark from "@/assets/logo-legal-salahkaar.png";
+import logoMark from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },

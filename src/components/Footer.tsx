@@ -1,5 +1,5 @@
 import { Scale, ArrowUp, Linkedin, Twitter } from "lucide-react";
-import logoMark from "@/assets/logo-legal-salahkaar.png";
+import logoMark from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

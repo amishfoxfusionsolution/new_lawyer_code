@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
 import heroBg from "@/assets/hero-bg.jpg";
-import logoMark from "@/assets/logo-legal-salahkaar.png";
+import logoMark from "@/assets/logo.png";
 
 const LandingPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);

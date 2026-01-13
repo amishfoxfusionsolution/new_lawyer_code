@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LandingPage from "@/components/LandingPage";
 import { Navigate, useLocation } from "react-router-dom";
-import logoMark from "@/assets/logo-legal-salahkaar.png";
+import logoMark from "@/assets/logo.png";
 
 const Index = () => {
   const { user, role, loading } = useAuth();

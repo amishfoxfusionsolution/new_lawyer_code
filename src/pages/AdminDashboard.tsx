@@ -9,7 +9,7 @@ import UserTable from '@/components/admin/UserTable';
 import LawyerTable from '@/components/admin/LawyerTable';
 import StatCard from '@/components/admin/StatCard';
 import { toast } from 'sonner';
-import logoMark from "@/assets/logo-legal-salahkaar.png";
+import logoMark from "@/assets/logo.png";
 
 const AdminDashboard = () => {
   const { user, role, loading, signOut } = useAuth();
