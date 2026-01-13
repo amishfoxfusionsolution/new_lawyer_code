@@ -20,7 +20,7 @@ const Index = () => {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-40 h-10 flex items-center justify-center animate-pulse">
+          <div className="w-48 h-12 flex items-center justify-center animate-pulse">
             <img src={logoMark} alt="Loading Logo" className="h-full w-auto object-contain" />
           </div>
           <p className="text-muted-foreground animate-pulse">Loading...</p>

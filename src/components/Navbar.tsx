@@ -78,7 +78,7 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#home" className="flex items-center group">
               {/* Updated Logo: Rectangular container, increased size */}
-              <div className="w-60 h-30 flex items-center justify-start">
+              <div className="w-48 h-12 flex items-center justify-start">
                 <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
               </div>
             </a>
