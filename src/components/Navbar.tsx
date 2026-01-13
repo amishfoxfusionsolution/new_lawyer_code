@@ -76,18 +76,10 @@ const Navbar = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
+            <a href="#home" className="flex items-center group">
               {/* Updated Logo */}
-              <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
-                <img src={logoMark} alt="Legal Salahkaar Logo" className="w-9 h-9 object-contain" />
-              </div>
-              <div>
-                <span className="font-display text-xl font-semibold text-foreground tracking-wide">
-                  LEGAL
-                </span>
-                <span className="block text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  SALAHKAAR
-                </span>
+              <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center">
+                <img src={logoMark} alt="Legal Salahkaar Logo" className="w-11 h-11 object-contain" />
               </div>
             </a>
 
