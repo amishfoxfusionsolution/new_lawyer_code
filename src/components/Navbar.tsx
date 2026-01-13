@@ -77,10 +77,9 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href="#home" className="flex items-center group gap-3">
-              <div className="w-10 h-10 flex items-center justify-center">
+              <div className="w-48 h-14 flex items-center justify-center">
                 <img src={logoMark} alt="Legal Salahkaar Logo Mark" className="h-full w-auto object-contain" />
               </div>
-              <span className="font-display text-2xl font-bold text-foreground">Legal Salahkaar</span>
             </a>
 
             {/* Desktop Navigation */}
