@@ -78,8 +78,8 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#home" className="flex items-center gap-3 group">
               {/* Updated Logo */}
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center p-1">
-                <img src={logoMark} alt="Legal Salahkaar Logo" className="w-full h-full object-contain" />
+              <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
+                <img src={logoMark} alt="Legal Salahkaar Logo" className="w-9 h-9 object-contain" />
               </div>
               <div>
                 <span className="font-display text-xl font-semibold text-foreground tracking-wide">
