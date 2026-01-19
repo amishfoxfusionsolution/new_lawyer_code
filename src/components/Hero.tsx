@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import Logo from "@/components/Logo";
 
 const Hero = () => {
   return (
@@ -21,27 +22,27 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Tagline */}
-          <p className="text-primary uppercase tracking-[0.4em] text-sm mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
-            Legal Salahkaar
-          </p>
+          
+          {/* Logo with Tagline */}
+          <div className="animate-reveal-up" style={{ animationDelay: '0.1s' }}>
+            <Logo size="lg" showTagline={true} className="justify-center mx-auto" />
+          </div>
 
-          {/* Main Heading */}
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
-            Where{" "}
+          {/* Main Heading - Adjusted */}
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mt-8 mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
+            Unwavering{" "}
             <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
-              Guidance
+              Dedication
             </span>{" "}
-            Meets{" "}
+            to Protecting{" "}
             <span className="bg-gradient-to-r from-sapphire-light to-primary bg-clip-text text-transparent">
-              Expertise
+              What Matters Most
             </span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle - Adjusted slightly */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 font-body leading-relaxed animate-reveal-up" style={{ animationDelay: '0.5s' }}>
-            Elite legal representation for those who value privacy, precision, and unwavering dedication 
-            to protecting what matters most.
+            Elite legal representation for those who value privacy, precision, and decisive action.
           </p>
 
           {/* CTA Buttons */}
