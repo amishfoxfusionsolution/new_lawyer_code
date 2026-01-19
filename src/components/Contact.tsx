@@ -16,29 +16,6 @@ interface ConsultationRequest {
   message: string;
 }
 
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Location",
-    value: "Private Office, Available Upon Request",
-  },
-  {
-    icon: Phone,
-    title: "Secure Line",
-    value: "+1 (555) SALAHKAAR-1",
-  },
-  {
-    icon: Mail,
-    title: "Encrypted Email",
-    value: "consult@legalsalahkaar.com",
-  },
-  {
-    icon: Clock,
-    title: "Availability",
-    value: "24/7 Emergency Line Available",
-  },
-];
-
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -168,46 +145,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Left - Contact Info */}
-          <div className={`lg:col-span-2 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="space-y-6">
-              {contactInfo.map((item, index) => (
-                <div
-                  key={item.title}
-                  className="group flex items-start gap-5 p-5 bg-card/50 border border-border/30 rounded-lg hover:border-primary/30 hover:bg-card transition-all duration-500 animate-fade-in-left"
-                  style={{ animationDelay: `${600 + index * 150}ms` }}
-                >
-                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
-                    <item.icon className="text-primary w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h4>
-                    <p className="text-muted-foreground">{item.value}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Trust Badge */}
-            <div className="mt-10 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg animate-scale-in" style={{ animationDelay: '1.5s' }}>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center animate-glow-pulse">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-display text-lg font-semibold text-foreground">Protected Communication</h4>
-              </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                All inquiries are encrypted and protected by attorney-client privilege. 
-                Your information will never be shared without your explicit consent.
-              </p>
-            </div>
-          </div>
-
-          {/* Right - Form */}
-          <div className={`lg:col-span-3 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+        <div className="max-w-3xl mx-auto">
+          {/* Form */}
+          <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <div className="bg-card border border-border/50 rounded-lg p-8 lg:p-10 relative overflow-hidden animate-fade-in-right" style={{ animationDelay: '0.7s' }}>
               {/* Form Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl"></div>
