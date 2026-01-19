@@ -92,10 +92,6 @@ const Footer = () => {
               <p className="hover:text-primary transition-colors cursor-pointer">
                 consult@legalsalahkaar.com
               </p>
-              <p>
-                Private Office<br />
-                Available Upon Request
-              </p>
             </div>
           </div>
         </div>
