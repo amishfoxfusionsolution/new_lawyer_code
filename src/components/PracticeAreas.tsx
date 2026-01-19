@@ -94,19 +94,19 @@ const PracticeAreas = () => {
             </p>
             
             <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Understand Your Problem:</span> You share your legal issue in simple words. We carefully review it to understand what you actually need.
+              <span className="text-primary font-semibold">Step 1: The Whisper:</span> Share your legal challenge in confidence. We listen closely and distill the core issue, ensuring we understand your needs perfectly.
             </p>
             
             <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Identify the Right Expertise:</span> Every case is different. We determine the type of legal expertise and experience required.
+              <span className="text-primary font-semibold">Step 2: Precision Matching:</span> Every case demands a specialist. We pinpoint the exact legal expertise and experience required for your unique situation.
             </p>
             
             <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Match You With the Right Advocate:</span> Based on your situation, we connect you with a suitable verified advocate who handles matters like yours.
+              <span className="text-primary font-semibold">Step 3: The Connection:</span> We introduce you to a verified advocate—a proven expert who has successfully handled cases just like yours.
             </p>
             
             <p className="text-muted-foreground text-base mb-4">
-              <span className="text-primary font-semibold">Smooth & Confidential Process:</span> Your details are shared securely so you don’t have to explain your problem again and again.
+              <span className="text-primary font-semibold">Step 4: Seamless Transition:</span> Your secure profile ensures the advocate is fully briefed, saving you time and maintaining absolute confidentiality.
             </p>
             
             <p className="text-primary font-semibold text-lg">
