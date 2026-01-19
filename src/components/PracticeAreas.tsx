@@ -87,13 +87,13 @@ const PracticeAreas = () => {
           
           <div className="max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
             <p className="text-foreground text-lg font-semibold mb-4">
-              We help you reach the right advocate — the right way.
+              We offer expert legal guidance across all major practice areas.
             </p>
             <p className="text-muted-foreground text-base mb-4">
-              You share your legal issue, and we carefully review it to understand your needs and identify the required expertise. We then securely match you with a suitable, verified advocate who handles matters like yours, ensuring you don't have to explain your problem repeatedly.
+              Our network of verified advocates specializes in providing confidential and precise advice, ensuring you are matched with the right professional for your specific legal challenge.
             </p>
             <p className="text-primary font-semibold text-lg">
-              Clear process. Honest guidance. No pressure.
+              Right advice. Right advocate.
             </p>
           </div>
         </div>
