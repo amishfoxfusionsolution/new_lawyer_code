@@ -1,11 +1,9 @@
-import React from 'react';
-
 interface AnimatedScalesProps {
   size?: number;
   className?: string;
 }
 
-const AnimatedScales: React.FC<AnimatedScalesProps> = ({ size = 120, className = '' }) => {
+const AnimatedScales = ({ size = 120, className = '' }: AnimatedScalesProps) => {
   return (
     <div className={`relative ${className}`} style={{ width: size, height: size }}>
       <svg

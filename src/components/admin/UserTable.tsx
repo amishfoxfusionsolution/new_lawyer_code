@@ -1,8 +1,7 @@
-import React from 'react';
 import { AdminUser } from '@/hooks/useAdminUsers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { User, Mail, Phone, Clock } from 'lucide-react';
+import { User, Mail, Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 interface UserTableProps {
@@ -10,7 +9,7 @@ interface UserTableProps {
   isLoading: boolean;
 }
 
-const UserTable: React.FC<UserTableProps> = ({ clients, isLoading }) => {
+const UserTable = ({ clients, isLoading }: UserTableProps) => {
   if (isLoading) {
     return (
       <Card className="bg-card border-gold/20 animate-pulse">

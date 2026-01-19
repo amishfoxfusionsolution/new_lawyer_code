@@ -1,4 +1,3 @@
-import React from 'react';
 import { AdminUser } from '@/hooks/useAdminUsers';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -10,7 +9,7 @@ interface LawyerTableProps {
   isLoading: boolean;
 }
 
-const LawyerTable: React.FC<LawyerTableProps> = ({ lawyers, isLoading }) => {
+const LawyerTable = ({ lawyers, isLoading }: LawyerTableProps) => {
   if (isLoading) {
     return (
       <Card className="bg-card border-gold/20 animate-pulse">

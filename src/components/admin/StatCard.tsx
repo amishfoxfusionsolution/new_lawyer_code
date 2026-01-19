@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LucideIcon, TrendingUp, TrendingDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -14,7 +13,7 @@ interface StatCardProps {
   };
 }
 
-const StatCard: React.FC<StatCardProps> = ({ title, value, subtitle, icon: Icon, trend }) => {
+const StatCard = ({ title, value, subtitle, icon: Icon, trend }: StatCardProps) => {
   return (
     <Card className="bg-card border-border/50 shadow-card hover:border-primary/50 transition-colors duration-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

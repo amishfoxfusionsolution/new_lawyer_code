@@ -1,4 +1,3 @@
-import React from 'react';
 import { cn } from '@/lib/utils';
 import logoImage from '@/assets/logo-image.png';
 
@@ -8,7 +7,7 @@ interface LogoProps {
   showTagline?: boolean;
 }
 
-const Logo: React.FC<LogoProps> = ({ className, size = 'md', showTagline = false }) => {
+const Logo = ({ className, size = 'md', showTagline = false }: LogoProps) => {
   const sizeClasses = {
     sm: { img: 'h-6', text: 'text-lg' },
     md: { img: 'h-8', text: 'text-xl' },
