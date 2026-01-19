@@ -77,15 +77,12 @@ const About = () => {
           {/* Left - Text Content */}
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <p className="text-xl text-foreground/90 leading-relaxed mb-8 font-light animate-fade-in-left" style={{ animationDelay: '0.7s' }}>
-              For over two decades, Legal Salahkaar has operated in the shadows of the legal world, 
-              delivering decisive victories for clients who demand the highest level of{" "}
-              <span className="text-primary font-medium">confidentiality</span> and{" "}
-              <span className="text-primary font-medium">expertise</span>.
+              Legal Salahkaar helps individuals understand their legal problems before choosing a lawyer. We provide clear, reliable legal guidance in simple language and connect users with the right advocate when needed.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-10 text-lg animate-fade-in-left" style={{ animationDelay: '0.9s' }}>
-              Our approach is unconventional. While others announce their moves, we work silently, 
-              strategically, and with surgical precision. Every case is handled with the utmost 
-              discretion, ensuring our clients' interests remain protected at every turn.
+              Our focus is on clarity, <span className="text-primary font-medium">confidentiality</span>, and <span className="text-primary font-medium">honest advice</span> — without pressure or legal jargon.
+              <br/><br/>
+              <span className="font-display text-xl font-semibold text-primary">Right advice. Right advocate.</span>
             </p>
 
             <div className="flex items-center gap-6 animate-fade-in-left" style={{ animationDelay: '1.1s' }}>
