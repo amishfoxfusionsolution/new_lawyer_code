@@ -41,13 +41,8 @@ const HowItWorks = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* How It Works Header */}
-        <div className={`text-center max-w-3xl mx-auto mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-3 mb-6 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
-            <span className="w-12 h-px bg-primary animate-line-grow"></span>
-            <span className="text-primary uppercase tracking-[0.4em] text-sm font-medium">Process</span>
-            <span className="w-12 h-px bg-primary animate-line-grow"></span>
-          </div>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-4 animate-reveal-up" style={{ animationDelay: '0.3s' }}>
+        <div className={`text-center max-w-3xl mx-auto mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-4 animate-reveal-up" style={{ animationDelay: '0.1s' }}>
             How It{" "}
             <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
               Works
