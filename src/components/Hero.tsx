@@ -36,9 +36,9 @@ const Hero = () => {
             </span>
           </h1>
 
-          {/* Subtitle - Adjusted slightly */}
+          {/* Subtitle - Updated */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 font-body leading-relaxed animate-reveal-up" style={{ animationDelay: '0.5s' }}>
-            Elite legal representation for those who value privacy, precision, and decisive action.
+            Confused about a legal issue? Get expert legal advice and connect with the right advocate for your case, quickly and confidentially.
           </p>
 
           {/* CTA Buttons */}
