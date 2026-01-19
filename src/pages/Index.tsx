@@ -3,13 +3,12 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import PracticeAreas from "@/components/PracticeAreas";
-import HowItWorks from "@/components/HowItWorks"; // Import new component
-import Testimonials from "@/components/Testimonials";
+import HowItWorks from "@/components/HowItWorks";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LandingPage from "@/components/LandingPage";
 import { Navigate, useLocation } from "react-router-dom";
-import Logo from "@/components/Logo"; // Import Logo component
+import Logo from "@/components/Logo";
 
 const Index = () => {
   const { user, role, loading } = useAuth();
@@ -57,8 +56,7 @@ const Index = () => {
       <Hero />
       <About />
       <PracticeAreas />
-      <HowItWorks /> {/* Added the new section here */}
-      <Testimonials />
+      <HowItWorks />
       <Contact />
       <Footer />
     </div>
