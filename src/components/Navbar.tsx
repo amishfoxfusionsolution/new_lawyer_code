@@ -77,9 +77,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href="#home" className="flex items-center group">
-              <div className="w-56 h-14 flex items-center justify-start">
-                <Logo />
-              </div>
+              <Logo showTagline={true} />
             </a>
 
             {/* Desktop Navigation */}
