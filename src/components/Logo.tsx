@@ -9,18 +9,23 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className, size = 'md' }) => {
   const sizeClasses = {
-    sm: 'h-6',
-    md: 'h-8',
-    lg: 'h-10',
+    sm: { img: 'h-6', text: 'text-lg' },
+    md: { img: 'h-8', text: 'text-xl' },
+    lg: { img: 'h-10', text: 'text-2xl' },
   };
   
+  const currentSize = sizeClasses[size];
+
   return (
-    <div className={cn("flex items-center", className)}>
+    <div className={cn("flex items-center gap-2", className)}>
       <img 
         src={logoImage} 
         alt="Legal Salahkaar Logo" 
-        className={cn("w-auto", sizeClasses[size])} 
+        className={cn("w-auto", currentSize.img)} 
       />
+      <span className={cn("font-display font-bold text-foreground", currentSize.text)}>
+        Legal <span className="text-primary">Salahkaar</span>
+      </span>
     </div>
   );
 };
