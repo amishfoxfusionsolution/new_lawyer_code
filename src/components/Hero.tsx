@@ -28,15 +28,11 @@ const Hero = () => {
             <Logo size="lg" showTagline={true} className="justify-center mx-auto" />
           </div>
 
-          {/* Main Heading - Adjusted */}
+          {/* Main Heading - Updated */}
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mt-8 mb-8 leading-tight animate-reveal-up" style={{ animationDelay: '0.3s' }}>
-            Unwavering{" "}
+            Legal Salahkaar{" "}
             <span className="bg-gradient-to-r from-primary to-sapphire-light bg-clip-text text-transparent">
-              Dedication
-            </span>{" "}
-            to Protecting{" "}
-            <span className="bg-gradient-to-r from-sapphire-light to-primary bg-clip-text text-transparent">
-              What Matters Most
+              Aap k saath
             </span>
           </h1>
 
