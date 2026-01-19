@@ -284,23 +284,6 @@ const Contact = () => {
                   <span>{isSubmitting ? 'Checking Status...' : 'Request Secure Consultation'}</span>
                   <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Button>
-
-                {/* Trust Badge */}
-                <div className="mt-6 pt-4 border-t border-border/50 flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-primary" />
-                    Attorney-Client Privilege
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Lock className="w-4 h-4 text-primary" />
-                    Encrypted Communication
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-primary" />
-                    24-Hour Response
-                  </div>
-                </div>
-                {/* End Trust Badge */}
               </form>
             </div>
           </div>
