@@ -87,13 +87,30 @@ const PracticeAreas = () => {
           
           <div className="max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
             <p className="text-foreground text-lg font-semibold mb-4">
-              We offer expert legal guidance across all major practice areas.
+              At Legal Salahkaar
             </p>
+            <p className="text-foreground text-base font-semibold mb-4">
+              We help you reach the right advocate — the right way.
+            </p>
+            
+            <p className="text-muted-foreground text-base mb-2">
+              <span className="text-primary font-semibold">Understand Your Problem:</span> You share your legal issue in simple words. We carefully review it to understand what you actually need.
+            </p>
+            
+            <p className="text-muted-foreground text-base mb-2">
+              <span className="text-primary font-semibold">Identify the Right Expertise:</span> Every case is different. We determine the type of legal expertise and experience required.
+            </p>
+            
+            <p className="text-muted-foreground text-base mb-2">
+              <span className="text-primary font-semibold">Match You With the Right Advocate:</span> Based on your situation, we connect you with a suitable verified advocate who handles matters like yours.
+            </p>
+            
             <p className="text-muted-foreground text-base mb-4">
-              Our network of verified advocates specializes in providing confidential and precise advice, ensuring you are matched with the right professional for your specific legal challenge.
+              <span className="text-primary font-semibold">Smooth & Confidential Process:</span> Your details are shared securely so you don’t have to explain your problem again and again.
             </p>
+            
             <p className="text-primary font-semibold text-lg">
-              Right advice. Right advocate.
+              Clear process. Honest guidance. No pressure.
             </p>
           </div>
         </div>
