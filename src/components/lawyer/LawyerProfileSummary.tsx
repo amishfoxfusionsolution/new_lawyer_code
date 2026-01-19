@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLawyerProfile } from '@/hooks/useLawyerProfile';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -10,7 +9,7 @@ interface LawyerProfileSummaryProps {
   onEdit: () => void;
 }
 
-const LawyerProfileSummary: React.FC<LawyerProfileSummaryProps> = ({ onEdit }) => {
+const LawyerProfileSummary = ({ onEdit }: LawyerProfileSummaryProps) => {
   const { profile, isProfileLoading } = useLawyerProfile();
 
   if (isProfileLoading) {

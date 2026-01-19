@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLawyerProfile } from '@/hooks/useLawyerProfile';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ interface LawyerProfileFormProps {
   onSave: () => void;
 }
 
-const LawyerProfileForm: React.FC<LawyerProfileFormProps> = ({ onSave }) => {
+const LawyerProfileForm = ({ onSave }: LawyerProfileFormProps) => {
   const { profile, isProfileLoading, updateProfile, isUpdating } = useLawyerProfile();
   
   // Personal Details
