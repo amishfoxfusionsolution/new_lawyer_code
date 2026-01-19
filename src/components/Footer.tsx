@@ -1,5 +1,5 @@
 import { Scale, ArrowUp, Linkedin, Twitter } from "lucide-react";
-import logoMark from "@/assets/logo.png";
+import Logo from "@/components/Logo"; // Import Logo component
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,9 +20,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={scrollToTop}>
               {/* Updated Logo */}
-              <div className="w-40 h-10 flex items-center justify-start">
-                <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
-              </div>
+              <Logo className="text-3xl" />
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Elite legal representation for those who value discretion. 

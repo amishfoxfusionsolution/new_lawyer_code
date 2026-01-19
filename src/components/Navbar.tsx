@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import logoMark from "@/assets/logo.png";
+import Logo from "@/components/Logo"; // Import Logo component
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -78,7 +78,7 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#home" className="flex items-center group">
               <div className="w-56 h-14 flex items-center justify-start">
-                <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
+                <Logo />
               </div>
             </a>
 

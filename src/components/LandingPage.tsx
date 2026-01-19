@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
 import heroBg from "@/assets/hero-bg.jpg";
-import logoMark from "@/assets/logo.png";
+import Logo from "@/components/Logo"; // Import Logo component
 
 const LandingPage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -28,7 +28,7 @@ const LandingPage = () => {
           <div className="flex items-center">
             {/* Updated Logo */}
             <div className="w-56 h-14 flex items-center justify-start">
-              <img src={logoMark} alt="Legal Salahkaar Logo" className="h-full w-auto object-contain" />
+              <Logo className="text-3xl" />
             </div>
           </div>
           <div className="flex items-center gap-3">

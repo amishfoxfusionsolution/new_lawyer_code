@@ -9,7 +9,7 @@ import UserTable from '@/components/admin/UserTable';
 import LawyerTable from '@/components/admin/LawyerTable';
 import StatCard from '@/components/admin/StatCard';
 import { toast } from 'sonner';
-import logoMark from "@/assets/logo.png";
+import Logo from "@/components/Logo"; // Import Logo component
 
 const AdminDashboard = () => {
   const { user, role, loading, signOut } = useAuth();
@@ -18,10 +18,13 @@ const AdminDashboard = () => {
   if (loading || isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="flex items-center gap-3 animate-pulse">
-          <div className="w-40 h-10 flex items-center justify-center">
-            <img src={logoMark} alt="Loading Logo" className="h-full w-auto object-contain" />
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex items-center gap-3 animate-pulse">
+            <div className="w-40 h-10 flex items-center justify-center">
+              <Logo className="text-4xl" />
+            </div>
           </div>
+          <p className="text-muted-foreground animate-pulse">Loading...</p>
         </div>
       </div>
     );

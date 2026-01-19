@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import LandingPage from "@/components/LandingPage";
 import { Navigate, useLocation } from "react-router-dom";
-import logoMark from "@/assets/logo.png";
+import Logo from "@/components/Logo"; // Import Logo component
 
 const Index = () => {
   const { user, role, loading } = useAuth();
@@ -22,7 +22,7 @@ const Index = () => {
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-3 animate-pulse">
             <div className="w-40 h-10 flex items-center justify-center">
-              <img src={logoMark} alt="Loading Logo" className="h-full w-auto object-contain" />
+              <Logo className="text-4xl" />
             </div>
           </div>
           <p className="text-muted-foreground animate-pulse">Loading...</p>
