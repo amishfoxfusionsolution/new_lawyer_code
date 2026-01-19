@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { DollarSign, ArrowRight } from 'lucide-react';
@@ -38,7 +38,7 @@ const loadRazorpayScript = (src: string) => {
   });
 };
 
-const PaymentPromptModal: React.FC<PaymentPromptModalProps> = ({ isOpen, onClose, onPay, formData }) => {
+const PaymentPromptModal = ({ isOpen, onClose, onPay, formData }: PaymentPromptModalProps) => {
   
   // Load Razorpay script when the component mounts
   useEffect(() => {
