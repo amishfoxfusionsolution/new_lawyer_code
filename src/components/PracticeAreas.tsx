@@ -84,9 +84,18 @@ const PracticeAreas = () => {
               </span>
             </h2>
           </div>
-          <p className="text-muted-foreground text-lg max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
-            At Legal Salahkaar, we provide clear legal guidance and connect you with the right advocate for your matter. Simple, confidential, and effective.
-          </p>
+          
+          <div className="max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
+            <p className="text-foreground text-lg font-semibold mb-4">
+              We help you reach the right advocate — the right way.
+            </p>
+            <p className="text-muted-foreground text-base mb-4">
+              You share your legal issue, and we carefully review it to understand your needs and identify the required expertise. We then securely match you with a suitable, verified advocate who handles matters like yours, ensuring you don't have to explain your problem repeatedly.
+            </p>
+            <p className="text-primary font-semibold text-lg">
+              Clear process. Honest guidance. No pressure.
+            </p>
+          </div>
         </div>
 
         {/* Practice Cards Grid */}
