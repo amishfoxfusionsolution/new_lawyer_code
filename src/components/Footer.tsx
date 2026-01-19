@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={scrollToTop}>
               {/* Updated Logo */}
-              <Logo className="text-3xl" />
+              <Logo size="lg" />
             </div>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Elite legal representation for those who value discretion. 

@@ -22,7 +22,7 @@ const Index = () => {
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-3 animate-pulse">
             <div className="w-40 h-10 flex items-center justify-center">
-              <Logo className="text-4xl" />
+              <Logo size="lg" />
             </div>
           </div>
           <p className="text-muted-foreground animate-pulse">Loading...</p>

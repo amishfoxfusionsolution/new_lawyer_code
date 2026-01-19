@@ -28,7 +28,7 @@ const LandingPage = () => {
           <div className="flex items-center">
             {/* Updated Logo */}
             <div className="w-56 h-14 flex items-center justify-start">
-              <Logo className="text-3xl" />
+              <Logo size="lg" />
             </div>
           </div>
           <div className="flex items-center gap-3">
