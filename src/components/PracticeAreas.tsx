@@ -40,6 +40,25 @@ const practices = [
   },
 ];
 
+const processSteps = [
+  {
+    title: "Understand Your Problem:",
+    description: "You share your legal issue in simple words. We carefully review it to understand what you actually need.",
+  },
+  {
+    title: "Identify the Right Expertise:",
+    description: "Every case is different. We determine the type of legal expertise and experience required.",
+  },
+  {
+    title: "Match You With the Right Advocate:",
+    description: "Based on your situation, we connect you with a suitable verified advocate who handles matters like yours.",
+  },
+  {
+    title: "Smooth & Confidential Process:",
+    description: "Your details are shared securely so you don’t have to explain your problem again and again.",
+  },
+];
+
 const PracticeAreas = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -86,32 +105,33 @@ const PracticeAreas = () => {
           </div>
           
           <div className="max-w-xl lg:text-right animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
-            <p className="text-foreground text-lg font-semibold mb-4">
-              At Legal Salahkaar
-            </p>
-            <p className="text-foreground text-base font-semibold mb-4">
-              We help you reach the right advocate — the right way.
-            </p>
-            
-            <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Understand Your Problem:</span> You share your legal issue in simple words. We carefully review it to understand what you actually need.
-            </p>
-            
-            <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Identify the Right Expertise:</span> Every case is different. We determine the type of legal expertise and experience required.
-            </p>
-            
-            <p className="text-muted-foreground text-base mb-2">
-              <span className="text-primary font-semibold">Match You With the Right Advocate:</span> Based on your situation, we connect you with a suitable verified advocate who handles matters like yours.
-            </p>
-            
-            <p className="text-muted-foreground text-base mb-4">
-              <span className="text-primary font-semibold">Smooth & Confidential Process:</span> Your details are shared securely so you don’t have to explain your problem again and again.
-            </p>
-            
-            <p className="text-primary font-semibold text-lg">
-              Clear process. Honest guidance. No pressure.
-            </p>
+            <div className="p-8 bg-noir-medium rounded-xl border border-primary/20 shadow-lg shadow-primary/10">
+              <p className="text-foreground text-lg font-semibold mb-4 font-display">
+                At Legal Salahkaar
+              </p>
+              <p className="text-foreground text-base font-semibold mb-8">
+                We help you reach the right advocate — the right way.
+              </p>
+
+              <div className="space-y-6">
+                {processSteps.map((step, index) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-background font-bold text-sm shrink-0 mt-1">
+                      {index + 1}
+                    </div>
+                    <p className="text-muted-foreground text-base text-left">
+                      <span className="text-primary font-semibold">{step.title}</span> {step.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-border/50">
+                <p className="text-primary font-semibold text-lg text-center">
+                  Clear process. Honest guidance. No pressure.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
