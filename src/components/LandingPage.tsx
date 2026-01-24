@@ -21,9 +21,21 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="py-6 px-8 border-b border-primary/10">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background Elements - Moved to root */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-scale-balance"
+          style={{ 
+            backgroundImage: `url(${heroBg})`,
+          }}
+        />
+        {/* Dark overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-noir/80 backdrop-blur-sm" />
+      </div>
+      
+      {/* Header - Made transparent */}
+      <header className="py-6 px-8 border-b border-primary/10 relative z-20 bg-transparent">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
             {/* Updated Logo */}
@@ -32,7 +44,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="ghost" onClick={openLogin} className="text-muted-foreground hover:text-primary">
+            <Button variant="ghost" onClick={openLogin} className="text-foreground hover:text-primary">
               Login
             </Button>
             <Button variant="hero" onClick={openSignup}>
@@ -42,24 +54,9 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <main className="flex-1 flex items-center justify-center relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute bg-cover bg-center bg-no-repeat animate-scale-balance"
-            style={{ 
-              backgroundImage: `url(${heroBg})`,
-              top: '-5%', 
-              bottom: '-5%', 
-              left: '-5%', 
-              right: '-5%' 
-            }}
-          />
-          {/* Dark overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-secondary/80 to-background/90" />
-        </div>
-        
+      {/* Hero Section - Main content area */}
+      <main className="flex-1 flex items-center justify-center relative z-20">
+        {/* Subtle background glow - Keeping these for effect */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-glow-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl animate-glow-pulse delay-1000" />
         
@@ -99,8 +96,8 @@ const LandingPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-6 px-8 border-t border-primary/10 text-center">
+      {/* Footer - Adding a slight background for separation */}
+      <footer className="py-6 px-8 border-t border-primary/10 text-center relative z-20 bg-background/80 backdrop-blur-sm">
         <p className="text-muted-foreground text-sm">
           © 2024 Legal Salahkaar. All rights reserved. Your privacy is our priority.
         </p>
