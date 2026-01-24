@@ -171,7 +171,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
           <div className="absolute inset-0">
             {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat" // Added bg-no-repeat for clarity
               style={{ backgroundImage: `url(${authBg})` }}
             />
             {/* Dark Overlay for readability */}
