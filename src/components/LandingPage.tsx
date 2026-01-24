@@ -3,7 +3,7 @@ import { Shield, Briefcase, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AuthModal } from '@/components/auth/AuthModal';
 import AnimatedScales from '@/components/AnimatedScales';
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/auth-bg.jpg";
 import Logo from "@/components/Logo"; // Import Logo component
 
 const LandingPage = () => {
