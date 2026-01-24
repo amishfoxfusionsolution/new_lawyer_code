@@ -6,8 +6,10 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { User, Briefcase, Shield, ArrowLeft } from 'lucide-react';
+import { User, Briefcase, ArrowLeft } from 'lucide-react';
 import AnimatedScales from '@/components/AnimatedScales';
+import { cn } from '@/lib/utils';
+import authBg from '@/assets/auth-bg.jpeg';
 
 type AppRole = 'user' | 'lawyer' | 'admin';
 type AuthView = 'login' | 'signup' | 'forgot-password';
@@ -159,178 +161,44 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-secondary border-primary/20">
-        <DialogHeader>
-          <div className="flex items-center justify-center mb-4">
-            <AnimatedScales size={48} />
+      <DialogContent 
+        className={cn(
+          "sm:max-w-md border-primary/20 relative overflow-hidden",
+          view === 'signup' ? 'p-0' : 'bg-secondary'
+        )}
+      >
+        {view === 'signup' && (
+          <div className="absolute inset-0">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${authBg})` }}
+            />
+            {/* Dark Overlay for readability */}
+            <div className="absolute inset-0 bg-noir/80 backdrop-blur-sm" />
           </div>
-          <DialogTitle className="text-2xl font-serif text-center text-foreground">
-            {getTitle()}
-          </DialogTitle>
-        </DialogHeader>
-
-        {view === 'forgot-password' ? (
-          <form onSubmit={handleForgotPassword} className="space-y-6 mt-4">
-            <p className="text-muted-foreground text-sm text-center">
-              Enter your email address and we'll send you a link to reset your password.
-            </p>
-            
-            <div className="space-y-2">
-              <Label htmlFor="reset-email" className="text-muted-foreground">Email</Label>
-              <Input
-                id="reset-email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-background border-primary/20 focus:border-primary"
-                placeholder="you@example.com"
-                required
-              />
+        )}
+        
+        <div className={cn("relative z-10 p-8", view === 'signup' && 'text-white')}>
+          <DialogHeader>
+            <div className="flex items-center justify-center mb-4">
+              <AnimatedScales size={48} className={view === 'signup' ? 'text-gold' : 'text-primary'} />
             </div>
+            <DialogTitle className={cn("text-2xl font-serif text-center", view === 'signup' ? 'text-gold' : 'text-foreground')}>
+              {getTitle()}
+            </DialogTitle>
+          </DialogHeader>
 
-            <Button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
-            >
-              {loading ? 'Sending...' : 'Send Reset Link'}
-            </Button>
-
-            <button
-              type="button"
-              onClick={() => setView('login')}
-              className="flex items-center justify-center gap-2 w-full text-primary hover:text-sapphire-light text-sm transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Login
-            </button>
-          </form>
-        ) : view === 'login' ? (
-          <>
-            <form onSubmit={handleLoginSubmit} className="space-y-6 mt-4">
-              {/* Role Selection for Login Intent */}
-              <div className="space-y-3">
-                <Label className="text-muted-foreground">I am logging in as a...</Label>
-                <div className="grid grid-cols-2 gap-3">
-                  {loginRoleOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setLoginIntentRole(option.value)}
-                      className={`p-4 rounded-lg border transition-all duration-300 text-center ${
-                        loginIntentRole === option.value
-                          ? 'border-primary bg-primary/10 text-primary'
-                          : 'border-primary/20 bg-background hover:border-primary/40 text-muted-foreground'
-                      }`}
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        {option.icon}
-                        <span className="text-sm font-medium">{option.label}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              {/* End Role Selection */}
-
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-muted-foreground">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="text-muted-foreground">Password</Label>
-                  <button
-                    type="button"
-                    onClick={() => setView('forgot-password')}
-                    className="text-xs text-primary hover:text-sapphire-light transition-colors"
-                  >
-                    Forgot password?
-                  </button>
-                </div>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="••••••••"
-                  required
-                  minLength={6}
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
-              >
-                {loading ? 'Signing In...' : 'Sign In'}
-              </Button>
-            </form>
-
-            <div className="text-center mt-4">
-              <button
-                type="button"
-                onClick={() => setView('signup')}
-                className="text-primary hover:text-sapphire-light text-sm transition-colors"
-              >
-                Don't have an account? Sign up
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <form onSubmit={handleSignupSubmit} className="space-y-6 mt-4">
-              <div className="space-y-3">
-                <Label className="text-muted-foreground">I am a...</Label>
-                <div className="grid grid-cols-2 gap-3">
-                  {roleOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setSelectedRole(option.value)}
-                      className={`p-4 rounded-lg border transition-all duration-300 text-center ${
-                        selectedRole === option.value
-                          ? 'border-primary bg-primary/10 text-primary'
-                          : 'border-primary/20 bg-background hover:border-primary/40 text-muted-foreground'
-                      }`}
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        {option.icon}
-                        <span className="text-sm font-medium">{option.label}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
+          {view === 'forgot-password' ? (
+            <form onSubmit={handleForgotPassword} className="space-y-6 mt-4">
+              <p className="text-muted-foreground text-sm text-center">
+                Enter your email address and we'll send you a link to reset your password.
+              </p>
               
               <div className="space-y-2">
-                <Label htmlFor="fullName" className="text-muted-foreground">Full Name</Label>
+                <Label htmlFor="reset-email" className="text-muted-foreground">Email</Label>
                 <Input
-                  id="fullName"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="signup-email" className="text-muted-foreground">Email</Label>
-                <Input
-                  id="signup-email"
+                  id="reset-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -340,53 +208,206 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="signup-phone" className="text-muted-foreground">Phone Number</Label>
-                <Input
-                  id="signup-phone"
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="+1234567890"
-                  required
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="signup-password" className="text-muted-foreground">Password</Label>
-                <Input
-                  id="signup-password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="bg-background border-primary/20 focus:border-primary"
-                  placeholder="••••••••"
-                  required
-                  minLength={6}
-                />
-              </div>
-
               <Button
                 type="submit"
                 disabled={loading}
                 className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
               >
-                {loading ? 'Please wait...' : 'Create Account'}
+                {loading ? 'Sending...' : 'Send Reset Link'}
               </Button>
-            </form>
 
-            <div className="text-center mt-4">
               <button
                 type="button"
                 onClick={() => setView('login')}
-                className="text-primary hover:text-sapphire-light text-sm transition-colors"
+                className="flex items-center justify-center gap-2 w-full text-primary hover:text-sapphire-light text-sm transition-colors"
               >
-                Already have an account? Sign in
+                <ArrowLeft className="w-4 h-4" />
+                Back to Login
               </button>
-            </div>
-          </>
-        )}
+            </form>
+          ) : view === 'login' ? (
+            <>
+              <form onSubmit={handleLoginSubmit} className="space-y-6 mt-4">
+                {/* Role Selection for Login Intent */}
+                <div className="space-y-3">
+                  <Label className="text-muted-foreground">I am logging in as a...</Label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {loginRoleOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => setLoginIntentRole(option.value)}
+                        className={`p-4 rounded-lg border transition-all duration-300 text-center ${
+                          loginIntentRole === option.value
+                            ? 'border-primary bg-primary/10 text-primary'
+                            : 'border-primary/20 bg-background hover:border-primary/40 text-muted-foreground'
+                        }`}
+                      >
+                        <div className="flex flex-col items-center gap-2">
+                          {option.icon}
+                          <span className="text-sm font-medium">{option.label}</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {/* End Role Selection */}
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-muted-foreground">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-background border-primary/20 focus:border-primary"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="password" className="text-muted-foreground">Password</Label>
+                    <button
+                      type="button"
+                      onClick={() => setView('forgot-password')}
+                      className="text-xs text-primary hover:text-sapphire-light transition-colors"
+                    >
+                      Forgot password?
+                    </button>
+                  </div>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-background border-primary/20 focus:border-primary"
+                    placeholder="••••••••"
+                    required
+                    minLength={6}
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-primary hover:bg-sapphire-light text-background font-semibold py-3"
+                >
+                  {loading ? 'Signing In...' : 'Sign In'}
+                </Button>
+              </form>
+
+              <div className="text-center mt-4">
+                <button
+                  type="button"
+                  onClick={() => setView('signup')}
+                  className="text-primary hover:text-sapphire-light text-sm transition-colors"
+                >
+                  Don't have an account? Sign up
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <form onSubmit={handleSignupSubmit} className="space-y-6 mt-4">
+                <div className="space-y-3">
+                  <Label className="text-gold">I am a...</Label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {roleOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => setSelectedRole(option.value)}
+                        className={`p-4 rounded-lg border transition-all duration-300 text-center ${
+                          selectedRole === option.value
+                            ? 'border-gold bg-gold/10 text-gold'
+                            : 'border-primary/20 bg-noir-medium hover:border-gold/40 text-muted-foreground'
+                        }`}
+                      >
+                        <div className="flex flex-col items-center gap-2">
+                          {option.icon}
+                          <span className="text-sm font-medium">{option.label}</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="fullName" className="text-gold">Full Name</Label>
+                  <Input
+                    id="fullName"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="bg-noir-medium border-primary/20 focus:border-gold text-white"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="signup-email" className="text-gold">Email</Label>
+                  <Input
+                    id="signup-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-noir-medium border-primary/20 focus:border-gold text-white"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="signup-phone" className="text-gold">Phone Number</Label>
+                  <Input
+                    id="signup-phone"
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                    className="bg-noir-medium border-primary/20 focus:border-gold text-white"
+                    placeholder="+1234567890"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="signup-password" className="text-gold">Password</Label>
+                  <Input
+                    id="signup-password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="bg-noir-medium border-primary/20 focus:border-gold text-white"
+                    placeholder="••••••••"
+                    required
+                    minLength={6}
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-gold hover:bg-gold-light text-background font-semibold py-3"
+                >
+                  {loading ? 'Please wait...' : 'Create Account'}
+                </Button>
+              </form>
+
+              <div className="text-center mt-4">
+                <button
+                  type="button"
+                  onClick={() => setView('login')}
+                  className="text-gold hover:text-gold-light text-sm transition-colors"
+                >
+                  Already have an account? Sign in
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
